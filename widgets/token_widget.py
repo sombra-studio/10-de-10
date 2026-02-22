@@ -93,7 +93,6 @@ class TokenWidget(Frame):
         # HACK
         self.is_on_focus = False
         self.on_unselect()
-        self.on_select_callback(self.index)
     
     def unfocus(self):
         if not self.is_selected:
