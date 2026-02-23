@@ -1,2 +1,3 @@
+from controllers.logo_controller import LogoController
 from controllers.menu_controller import MenuController
 from controllers.play_controller import PlayController
