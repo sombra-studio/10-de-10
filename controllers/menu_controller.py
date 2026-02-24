@@ -19,6 +19,7 @@ class MenuController(Controller):
         ]
 
     def on_load(self):
+        super().on_load()
         # Load screen
         self.screen = MenuScreen()
         self.app.set_screen(self.screen)
@@ -43,6 +44,7 @@ class MenuController(Controller):
         pass
 
     def exit(self):
+        self.close()
         pyglet.app.exit()
 
     def update(self, dt: float):

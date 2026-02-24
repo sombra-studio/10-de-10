@@ -1,7 +1,6 @@
 from pudu_ui import App, Controller
 from pudu_ui.colors import BLACK, WHITE
 from pudu_ui.navigation import Navigator
-import time
 
 
 from constants import LOGO, MENU
@@ -18,6 +17,7 @@ class LogoController(Controller):
         self.timer = 0
 
     def on_load(self):
+        super().on_load()
         self.app.background_color = WHITE
         self.screen = LogoScreen()
         self.app.set_screen(self.screen)

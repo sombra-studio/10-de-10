@@ -12,7 +12,6 @@ class PlayController(Controller):
     def __init__(self, app: App, navigator: Navigator):
         self.selected_token_idx = None
         self.game = None
-        self.screen = None
         super().__init__(app=app, name=PLAY)
         self.navigator = navigator
 
