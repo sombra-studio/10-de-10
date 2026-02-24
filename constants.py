@@ -5,6 +5,7 @@ SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 
 # Screen names
+EDIT_NAME = "Edit name"
 LOGO = "Logo"
 MENU = "Menu"
 PLAY = "Play"

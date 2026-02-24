@@ -4,7 +4,8 @@ from pudu_ui import App
 
 from constants import LOGO, MENU, SCREEN_HEIGHT, SCREEN_WIDTH
 from controllers import (
-    LogoController, MenuController, PlayController, WinController
+    EditNameController, LogoController, MenuController, PlayController,
+    WinController
 )
 
 APP_NAME = "array.sort"
@@ -19,12 +20,18 @@ class GameApp(App):
 
         self.navigator = Navigator()
 
+        edit_name_controller = EditNameController(self, self.navigator)
+        self.navigator.add_controller(edit_name_controller)
+
         logo_controller = LogoController(self, self.navigator)
         self.navigator.add_controller(logo_controller)
+
         menu_controller = MenuController(self, self.navigator)
         self.navigator.add_controller(menu_controller)
+
         play_controller = PlayController(self, self.navigator)
         self.navigator.add_controller(play_controller)
+
         win_controller = WinController(self, self.navigator)
         self.navigator.add_controller(win_controller)
 
