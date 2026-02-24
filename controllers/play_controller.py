@@ -2,9 +2,9 @@ from pudu_ui import App, Controller
 from pudu_ui.navigation import Navigator
 
 
-from constants import MENU, PLAY
+from constants import PLAY, WIN
 from game import Game, get_random_tokens
-from screens import PlayScreen, WinScreen
+from screens import PlayScreen
 from utils import format_time
 
 
@@ -37,6 +37,7 @@ class PlayController(Controller):
     def update(self, dt: float):
         if self.game.is_solved():
             self.won()
+            return
 
         self.game.time += dt
         self.screen.time_label.text = format_time(self.game.time)
@@ -83,7 +84,4 @@ class PlayController(Controller):
             self.selected_token_idx = idx
 
     def won(self):
-        # Change screen to win
-        win_screen = WinScreen(self.game.time)
-        self.app.set_screen(win_screen)
-        win_screen.button.on_press = lambda l: self.navigator.change(MENU)
+        self.navigator.change(WIN, self.game.time)

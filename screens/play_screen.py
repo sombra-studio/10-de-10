@@ -16,6 +16,8 @@ class PlayScreen(Screen):
         on_select_callback: Callable[[int], None] = lambda l: None
     ):
         super().__init__('PlayScreen')
+        self.is_ready = False
+
         # Init UI
 
         # Labels
@@ -54,3 +56,13 @@ class PlayScreen(Screen):
         self.widgets.append(self.done_label)
 
         self.token_listlayout.focus()
+    
+    def update(self, dt):
+        if not self.is_ready:
+            super().update(dt)
+            self.is_ready = True
+        super().update(dt)
+
+    def draw(self):
+        if self.is_ready:
+            super().draw()

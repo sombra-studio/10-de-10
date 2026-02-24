@@ -18,7 +18,6 @@ class LogoController(Controller):
 
     def on_load(self):
         super().on_load()
-        self.app.background_color = WHITE
         self.screen = LogoScreen()
         self.app.set_screen(self.screen)
 
@@ -29,5 +28,4 @@ class LogoController(Controller):
 
 
     def start_game(self):
-        self.app.background_color = BLACK
         self.navigator.change(MENU)

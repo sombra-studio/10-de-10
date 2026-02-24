@@ -8,7 +8,7 @@ from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 
 
 OPTIONS = ["Jugar", "Editar Nombre", "Puntajes", "Opciones", "Salir"]
-GAME_TITLE = "Line Game"
+GAME_TITLE = "array.sort"
 TITLE_Y = SCREEN_HEIGHT - 100
 MENU_WIDTH = 250
 MENU_ITEM_HEIGHT = 50

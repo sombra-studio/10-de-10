@@ -1,9 +1,14 @@
-from pudu_ui import Button, Label, LabelParams, Screen
+from pudu_ui import Button, ButtonParams, Label, LabelParams, Screen
 from pudu_ui.styles.fonts import h1, h2
 
 
 from constants import FONT_COLOR, SCREEN_WIDTH, SCREEN_HEIGHT
 from utils import format_time
+
+
+TIME_LABEL_MARGIN_Y = 50
+BUTTON_WIDTH = 200
+BUTTON_Y = 200
 
 
 class WinScreen(Screen):
@@ -20,14 +25,21 @@ class WinScreen(Screen):
         self.win_label = Label(win_label_params, batch=self.batch)
 
         time_label_style = h2()
+        time_label_style.color = FONT_COLOR
         time_text = f"Tu tiempo fue {format_time(time)}"
+        time_label_y = win_label_y - TIME_LABEL_MARGIN_Y
         time_label_params = LabelParams(
-            x=SCREEN_WIDTH / 2, y=3 * SCREEN_HEIGHT / 4,
+            x=SCREEN_WIDTH / 2, y=time_label_y,
             text=time_text, anchor_x='center', anchor_y='center',
             style=time_label_style
         )
         self.time_label = Label(time_label_params, batch=self.batch)
 
-        self.button = Button(batch=self.batch)
+        button_params = ButtonParams(
+            x=SCREEN_WIDTH / 2 - BUTTON_WIDTH / 2, y=BUTTON_Y,
+            width=BUTTON_WIDTH, text="Continuar"
+        )
+        self.button = Button(params=button_params, batch=self.batch)
+        self.button.focus()
 
         self.widgets.append(self.button)

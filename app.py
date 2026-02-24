@@ -2,11 +2,12 @@ from pudu_ui.navigation import Navigator
 from pudu_ui import App
 
 
-from constants import LOGO, SCREEN_HEIGHT, SCREEN_WIDTH
-from controllers import LogoController, MenuController, PlayController
+from constants import LOGO, MENU, SCREEN_HEIGHT, SCREEN_WIDTH
+from controllers import (
+    LogoController, MenuController, PlayController, WinController
+)
 
-
-APP_NAME = "Line Game"
+APP_NAME = "array.sort"
 
 
 class GameApp(App):
@@ -24,8 +25,13 @@ class GameApp(App):
         self.navigator.add_controller(menu_controller)
         play_controller = PlayController(self, self.navigator)
         self.navigator.add_controller(play_controller)
+        win_controller = WinController(self, self.navigator)
+        self.navigator.add_controller(win_controller)
 
-        self.navigator.change(LOGO)
+        if not self.is_debug:
+            self.navigator.change(LOGO)
+        else:
+            self.navigator.change(MENU)
 
     def update(self, dt):
         controller = self.navigator.current_controller
