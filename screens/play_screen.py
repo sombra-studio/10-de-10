@@ -13,8 +13,7 @@ class PlayScreen(Screen):
         self,
         game: Game,
         player_name: str,
-        on_select_callback: Callable[[int], None] = lambda l: None,
-        on_unselect_callback: Callable[[int], None] = lambda l: None
+        on_select_callback: Callable[[int], None] = lambda l: None
     ):
         super().__init__('PlayScreen')
         # Init UI

@@ -1,3 +1,6 @@
+from pudu_ui.colors import WHITE
+
+
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 
@@ -5,3 +8,6 @@ SCREEN_HEIGHT = 720
 LOGO = "Logo"
 MENU = "Menu"
 PLAY = "Play"
+WIN = "Win"
+
+FONT_COLOR = WHITE
