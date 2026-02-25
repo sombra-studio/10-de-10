@@ -2,13 +2,11 @@ from pudu_ui.navigation import Navigator
 from pudu_ui import App
 
 
-from constants import LOGO, MENU, SCREEN_HEIGHT, SCREEN_WIDTH
+from constants import APP_NAME, LOGO, MENU, SCREEN_HEIGHT, SCREEN_WIDTH
 from controllers import (
     EditNameController, LogoController, MenuController, PlayController,
     WinController
 )
-
-APP_NAME = "array.sort"
 
 
 class GameApp(App):

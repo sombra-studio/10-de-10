@@ -1,6 +1,9 @@
 from pudu_ui.colors import WHITE
 
 
+APP_NAME = "array.sort"
+
+
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 
