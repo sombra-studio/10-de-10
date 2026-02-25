@@ -7,6 +7,7 @@ from controllers import (
     EditNameController, LogoController, MenuController, PlayController,
     WinController
 )
+from utils import get_highscores
 
 
 class GameApp(App):
@@ -15,9 +16,13 @@ class GameApp(App):
             width=SCREEN_WIDTH, height=SCREEN_HEIGHT, caption=APP_NAME
         )
         self.is_debug = is_debug
-
         self.navigator = Navigator()
 
+        # Load user name and highscores
+        self.highscores = get_highscores()
+        self.user_name = "Default User Name"
+
+        # Initialize controllers
         edit_name_controller = EditNameController(self, self.navigator)
         self.navigator.add_controller(edit_name_controller)
 
@@ -33,6 +38,7 @@ class GameApp(App):
         win_controller = WinController(self, self.navigator)
         self.navigator.add_controller(win_controller)
 
+        # Start navigation
         if not self.is_debug:
             self.navigator.change(LOGO)
         else:

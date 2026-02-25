@@ -10,6 +10,12 @@ NUM_TOKENS = 10
 
 
 @dataclass
+class Score:
+    user_name: str = "default name"
+    time: float = 1000
+
+
+@dataclass
 class Token:
     color: Color
 

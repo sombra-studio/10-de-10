@@ -1,10 +1,14 @@
 from io import TextIOWrapper
-
 import pyglet
 import os
 
 
 from constants import APP_NAME
+from game import Score
+
+
+HIGHSCORES_FILENAME = "highscores.txt"
+USER_NAME_FILENAME = "user_name.txt"
 
 
 def format_time(time: float) -> str:
@@ -12,37 +16,55 @@ def format_time(time: float) -> str:
     return "%02d:%02d" % (minutes, seconds)
 
 
-def open_highscores_file() -> TextIOWrapper:
+def write_data_file(filename: str) -> TextIOWrapper:
     folder = pyglet.resource.get_data_path(APP_NAME)
     if not os.path.exists(folder):
         os.makedirs(folder)
-    filename = os.path.join(folder, 'highscores.txt')
-    file = open(filename, 'r+t')
+    filename = os.path.join(folder, filename)
+    file = open(filename, 'wt')
     return file
 
 
-def get_highscores(f: TextIOWrapper) -> dict[str, float]:
+def write_user_name(user_name: str):
+    with write_data_file(USER_NAME_FILENAME) as f:
+        f.write(user_name)
+
+def write_highscores(highscores: list[Score]):
+    with write_data_file(HIGHSCORES_FILENAME) as f:
+        lines = []
+        for score in highscores:
+            lines += [score.user_name, f"{score.time:.2f}"]
+        f.writelines(lines)
+
+
+def get_highscores() -> list[Score]:
     """
-    Get the highscores from a given .txt file
-    Args:
-        f: A .txt file that will come like this:
-            "
-                Henry
-                323.11
-                Rafa
-                486.21
-                ...
-            "
+    Get the highscores from a given .txt file that will be like this:
+        "
+            Henry
+            323.11
+            Rafa
+            486.21
+            ...
+        "
+
     Returns:
-        dict[str, float]: A dictionary with the name of the user as a key and
-            its time in seconds as a float
+        list[Score]: An ordered list of the best scores
     """
-    high_scores = {}
-    name = None
-    for line in f:
-        if name:
-            high_scores[name] = float(line)
-            name = None
-        else:
-            name = line
+    high_scores: list[Score] = []
+    folder = pyglet.resource.get_data_path(APP_NAME)
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    filename = os.path.join(folder, HIGHSCORES_FILENAME)
+    try:
+        with open(filename, 'rt') as f:
+            curr_line_is_name = True
+            for line in f:
+                if curr_line_is_name:
+                    high_scores[-1].time = float(line)
+                else:
+                    new_score = Score(user_name=line)
+                    high_scores.append(new_score)
+    except IOError:
+        pass
     return high_scores
