@@ -11,9 +11,10 @@ TEXT_ENTRY_Y = 400
 
 
 class EditNameScreen(Screen):
-    def __init__(self):
+    def __init__(self, user_name: str):
         super().__init__("Edit")
         self.text_entry = TextEntry(
-            text="", x=TEXT_ENTRY_X, y=TEXT_ENTRY_Y, width=TEXT_ENTRY_WIDTH,
+            text=user_name, x=TEXT_ENTRY_X, y=TEXT_ENTRY_Y, width=TEXT_ENTRY_WIDTH,
             batch=self.batch
         )
+        self.text_entry.focus = True

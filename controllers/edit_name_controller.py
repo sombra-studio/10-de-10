@@ -4,6 +4,7 @@ from pudu_ui.navigation import Navigator
 
 from constants import EDIT_NAME, MENU
 from screens import EditNameScreen
+from utils import write_user_name
 
 
 class EditNameController(Controller):
@@ -11,17 +12,19 @@ class EditNameController(Controller):
         super().__init__(app=app, name=EDIT_NAME)
         self.navigator = navigator
 
-    def on_load(self):
+    def on_load(self, user_name: str):
         super().on_load()
-        self.screen = EditNameScreen()
+        self.screen = EditNameScreen(user_name=user_name)
         self.screen.text_entry.set_handler('on_commit', self.on_commit)
-        self.screen.text_entry.focus = True
         self.app.set_screen(self.screen)
         self.app.push_handlers(self.screen.text_entry)
 
     def on_commit(self, _, text: str):
-        print(f"new name {text}")
-        self.navigator.change(MENU)
+        write_user_name(text)
+        # how can we pass new data from the controller to the app?
+        # In this case the new user name. One way is just passing it from
+        # screen to screen, MENU -> PLAY
+        self.navigator.change(MENU, user_name=text)
 
     def on_close(self):
         super().on_close()

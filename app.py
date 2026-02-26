@@ -7,7 +7,6 @@ from controllers import (
     EditNameController, LogoController, MenuController, PlayController,
     WinController
 )
-from utils import get_highscores, get_user_name
 
 
 class GameApp(App):
@@ -17,10 +16,6 @@ class GameApp(App):
         )
         self.is_debug = is_debug
         self.navigator = Navigator()
-
-        # Load user name and highscores
-        self.highscores = get_highscores()
-        self.user_name = get_user_name()
 
         # Initialize controllers
         edit_name_controller = EditNameController(self, self.navigator)

@@ -12,24 +12,26 @@ class PlayController(Controller):
     def __init__(self, app: App, navigator: Navigator):
         self.selected_token_idx = None
         self.game = None
+        self.user_name = ""
         super().__init__(app=app, name=PLAY)
         self.navigator = navigator
 
-    def on_load(self):
+    def on_load(self, user_name: str):
         super().on_load()
+        self.user_name = user_name
+
         # Init Game
         tokens = get_random_tokens()
         original_tokens = get_random_tokens()
         start_time = 0.0
-        player_name = "Player Name"
 
-        self.game = Game(tokens, original_tokens, start_time, player_name)
+        self.game = Game(tokens, original_tokens, start_time, user_name)
         if self.game.is_solved():
             # ensure game is not solved
             self.game.swap(0, 9)
 
         self.screen = PlayScreen(
-            game=self.game, player_name=player_name,
+            game=self.game, player_name=user_name,
             on_select_callback=self.on_select_token
         )
         self.app.set_screen(self.screen)

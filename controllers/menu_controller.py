@@ -4,6 +4,7 @@ import pyglet.app
 
 from constants import EDIT_NAME, MENU, PLAY
 from screens import MenuScreen
+from utils import get_user_name
 
 
 class MenuController(Controller):
@@ -17,9 +18,15 @@ class MenuController(Controller):
             self.settings,
             self.exit
         ]
+        self.user_name = ""
+        self.highscores = []
 
-    def on_load(self):
+    def on_load(self, user_name: str = ""):
         super().on_load()
+        if not user_name:
+            user_name = get_user_name()
+        self.user_name = user_name
+
         # Load screen
         self.screen = MenuScreen()
         self.app.set_screen(self.screen)
@@ -32,10 +39,10 @@ class MenuController(Controller):
         self.button_maps[button_pressed.index]()
 
     def play(self):
-        self.navigator.change(PLAY)
+        self.navigator.change(PLAY, user_name=self.user_name)
 
     def edit_name(self):
-        self.navigator.change(EDIT_NAME)
+        self.navigator.change(EDIT_NAME, user_name=self.user_name)
 
     def scores(self):
         pass
@@ -46,6 +53,3 @@ class MenuController(Controller):
     def exit(self):
         self.close()
         pyglet.app.exit()
-
-    def update(self, dt: float):
-        pass
