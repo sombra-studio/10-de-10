@@ -15,3 +15,5 @@ PLAY = "Play"
 WIN = "Win"
 
 FONT_COLOR = WHITE
+
+MAX_SCORES_COUNT = 10

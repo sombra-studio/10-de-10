@@ -2,10 +2,10 @@ from pudu_ui import App, Controller
 from pudu_ui.navigation import Navigator
 
 
-from constants import PLAY, WIN
-from game import Game, get_random_tokens
+from constants import MAX_SCORES_COUNT, PLAY, WIN
+from game import Game, Score, get_random_tokens
 from screens import PlayScreen
-from utils import format_time
+from utils import format_time, get_highscores, write_highscores
 
 
 class PlayController(Controller):
@@ -86,4 +86,26 @@ class PlayController(Controller):
             self.selected_token_idx = idx
 
     def won(self):
+        # Get the highscores
+        highscores = get_highscores()
+
+        # Check if new score should be added to highscores
+        score_added = False
+        for i, score in enumerate(highscores):
+            # We assume highscores come in ascending order
+            if self.game.time < score.time:
+                new_score = Score(self.user_name, self.game.time)
+                highscores.insert(i, new_score)
+                score_added = True
+
+        if len(highscores) < MAX_SCORES_COUNT and not score_added:
+            new_score = Score(self.user_name, self.game.time)
+            highscores.append(new_score)
+            score_added = True
+
+        if score_added:
+            # Write the highscores again
+            write_highscores(highscores)
+
+        # Change to the win screen
         self.navigator.change(WIN, self.game.time)
