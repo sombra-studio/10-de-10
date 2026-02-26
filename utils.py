@@ -1,3 +1,4 @@
+import getpass
 from io import TextIOWrapper
 import pyglet
 import os
@@ -68,3 +69,19 @@ def get_highscores() -> list[Score]:
     except IOError:
         pass
     return high_scores
+
+
+def get_user_name() -> str:
+    folder = pyglet.resource.get_data_path(APP_NAME)
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    filename = os.path.join(folder, USER_NAME_FILENAME)
+    try:
+        with open(filename, 'rt') as f:
+            user_name = f.read()
+    except IOError:
+        try:
+            user_name = getpass.getuser()
+        except OSError:
+            user_name = "Undefined"
+    return user_name
