@@ -4,7 +4,8 @@ from pudu_ui import App
 
 from constants import APP_NAME, LOGO, MENU, SCREEN_HEIGHT, SCREEN_WIDTH
 from controllers import (
-    EditNameController, LogoController, MenuController, PlayController,
+    EditNameController, HighscoresController, LogoController, MenuController,
+    PlayController,
     WinController
 )
 
@@ -20,6 +21,9 @@ class GameApp(App):
         # Initialize controllers
         edit_name_controller = EditNameController(self, self.navigator)
         self.navigator.add_controller(edit_name_controller)
+
+        highscores_controller = HighscoresController(self, self.navigator)
+        self.navigator.add_controller(highscores_controller)
 
         logo_controller = LogoController(self, self.navigator)
         self.navigator.add_controller(logo_controller)

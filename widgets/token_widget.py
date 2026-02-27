@@ -9,7 +9,7 @@ from pyglet.window import mouse
 import pyglet
 
 
-from widgets.styles.tokens import TokenStyle
+from styles.tokens import TokenStyle
 
 
 DEFAULT_TOKEN_COLOR = pudu_ui.colors.GRAY

@@ -2,7 +2,7 @@ from pudu_ui.navigation import Navigator
 from pudu_ui import App, Button, Controller
 import pyglet.app
 
-from constants import EDIT_NAME, MENU, PLAY
+from constants import EDIT_NAME, HIGHSCORES, MENU, PLAY
 from screens import MenuScreen
 from utils import get_user_name
 
@@ -45,7 +45,7 @@ class MenuController(Controller):
         self.navigator.change(EDIT_NAME, user_name=self.user_name)
 
     def scores(self):
-        pass
+        self.navigator.change(HIGHSCORES)
 
     def settings(self):
         pass

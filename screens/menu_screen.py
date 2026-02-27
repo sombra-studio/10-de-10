@@ -1,15 +1,13 @@
-from pudu_ui.colors import WHITE
 from pudu_ui.layouts import ListLayout, ListLayoutParams, ListDirection
-from pudu_ui.styles.fonts import h1
-from pudu_ui import Button, ButtonParams, Label, LabelParams, Screen
+from pudu_ui import Button, ButtonParams, Screen
 
 
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from widgets import Title
 
 
 OPTIONS = ["Jugar", "Editar Nombre", "Puntajes", "Opciones", "Salir"]
 GAME_TITLE = "array.sort"
-TITLE_Y = SCREEN_HEIGHT - 100
 MENU_WIDTH = 250
 MENU_ITEM_HEIGHT = 50
 INTER_ITEM_SPACING = 20
@@ -23,14 +21,7 @@ class MenuScreen(Screen):
         super().__init__("Menu")
 
         # Title
-        label_style = h1()
-        label_style.color = WHITE
-        label_params = LabelParams(
-            x=SCREEN_WIDTH / 2, y=TITLE_Y,
-            anchor_x='center', anchor_y='center',
-            text=GAME_TITLE, style=label_style
-        )
-        self.title_label = Label(params=label_params, batch=self.batch)
+        self.title = Title(text=GAME_TITLE, batch=self.batch)
 
         # Menu List
         params = ListLayoutParams(
@@ -41,7 +32,6 @@ class MenuScreen(Screen):
             direction=ListDirection.VERTICAL
         )
         self.list_layout = ListLayout(params, batch=self.batch)
-
 
         button_params = ButtonParams()
         for option in OPTIONS:
