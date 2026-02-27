@@ -14,3 +14,9 @@ def h2():
     style = pudu_ui.styles.fonts.h2()
     style.color = FONT_COLOR
     return style
+
+
+def p1():
+    style = pudu_ui.styles.fonts.p1()
+    style.color = FONT_COLOR
+    return style

@@ -21,6 +21,7 @@ class EditNameController(Controller):
         self.app.set_screen(self.screen)
         self.app.push_handlers(self.screen.text_entry)
         self.screen.button.on_press = self.on_commit
+        self.screen.cancel_button.on_press = self.cancel
 
     def on_commit(self, *_):
         text = self.screen.text_entry.value
@@ -31,7 +32,7 @@ class EditNameController(Controller):
         # screen to screen, MENU -> PLAY
         self.navigator.change(MENU, user_name=text)
 
-    def cancel(self):
+    def cancel(self, _):
         self.navigator.change(MENU, user_name=self.user_name)
 
     def on_close(self):
