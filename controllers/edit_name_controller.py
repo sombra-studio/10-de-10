@@ -11,9 +11,11 @@ class EditNameController(Controller):
     def __init__(self, app: App, navigator: Navigator):
         super().__init__(app=app, name=EDIT_NAME)
         self.navigator = navigator
+        self.user_name = ""
 
     def on_load(self, user_name: str):
         super().on_load()
+        self.user_name = user_name
         self.screen = EditNameScreen(user_name=user_name)
         self.screen.text_entry.set_handler('on_commit', self.on_commit)
         self.app.set_screen(self.screen)
@@ -23,10 +25,14 @@ class EditNameController(Controller):
     def on_commit(self, *_):
         text = self.screen.text_entry.value
         write_user_name(text)
+        self.user_name = text
         # how can we pass new data from the controller to the app?
         # In this case the new user name. One way is just passing it from
         # screen to screen, MENU -> PLAY
         self.navigator.change(MENU, user_name=text)
+
+    def cancel(self):
+        self.navigator.change(MENU, user_name=self.user_name)
 
     def on_close(self):
         super().on_close()

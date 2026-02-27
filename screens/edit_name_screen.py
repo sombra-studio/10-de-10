@@ -2,7 +2,7 @@ from pudu_ui import Button, ButtonParams, Screen
 from pyglet.gui import TextEntry
 
 from constants import SCREEN_WIDTH
-from widgets import Title
+from widgets import CancelButton, Title
 
 TEXT_ENTRY_WIDTH = 150
 TEXT_ENTRY_HEIGHT = 32
@@ -30,4 +30,5 @@ class EditNameScreen(Screen):
             text=BUTTON_TEXT
         )
         self.button = Button(params=button_params, batch=self.batch)
+        self.cancel_button = CancelButton(batch=self.batch)
         self.widgets.append(self.button)
