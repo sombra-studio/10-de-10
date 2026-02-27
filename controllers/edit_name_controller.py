@@ -18,8 +18,10 @@ class EditNameController(Controller):
         self.screen.text_entry.set_handler('on_commit', self.on_commit)
         self.app.set_screen(self.screen)
         self.app.push_handlers(self.screen.text_entry)
+        self.screen.button.on_press = self.on_commit
 
-    def on_commit(self, _, text: str):
+    def on_commit(self, *_):
+        text = self.screen.text_entry.value
         write_user_name(text)
         # how can we pass new data from the controller to the app?
         # In this case the new user name. One way is just passing it from

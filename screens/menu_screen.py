@@ -15,7 +15,6 @@ N = len(OPTIONS)
 MENU_HEIGHT = int(MENU_ITEM_HEIGHT * N + INTER_ITEM_SPACING * (N - 1))
 
 
-
 class MenuScreen(Screen):
     def __init__(self):
         super().__init__("Menu")

@@ -5,8 +5,7 @@ from pudu_ui import App
 from constants import APP_NAME, LOGO, MENU, SCREEN_HEIGHT, SCREEN_WIDTH
 from controllers import (
     EditNameController, HighscoresController, LogoController, MenuController,
-    PlayController,
-    WinController
+    PlayController, WinController
 )
 
 
@@ -45,8 +44,6 @@ class GameApp(App):
 
     def update(self, dt):
         controller = self.navigator.current_controller
-        if (
-            controller and hasattr(controller, 'update')
-        ):
+        if controller and hasattr(controller, 'update'):
             controller.update(dt)
         super().update(dt)
