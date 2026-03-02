@@ -3,7 +3,7 @@ from pyglet.graphics import Batch
 
 
 from constants import SCREEN_WIDTH
-from widgets.cancel_button import BUTTON_Y, DIST_TO_CENTER
+from widgets.buttons.cancel_button import BUTTON_Y, DIST_TO_CENTER
 import styles
 
 
