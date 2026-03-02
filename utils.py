@@ -34,7 +34,7 @@ def write_highscores(highscores: list[Score]):
     with write_data_file(HIGHSCORES_FILENAME) as f:
         lines = []
         for score in highscores:
-            lines += [score.user_name, f"{score.time:.2f}"]
+            lines += [score.player_name, f"{score.time:.2f}"]
         f.writelines(lines)
 
 
@@ -64,7 +64,7 @@ def get_highscores() -> list[Score]:
                 if curr_line_is_name:
                     high_scores[-1].time = float(line)
                 else:
-                    new_score = Score(user_name=line)
+                    new_score = Score(player_name=line)
                     high_scores.append(new_score)
     except IOError:
         pass

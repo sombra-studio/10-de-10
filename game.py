@@ -11,7 +11,7 @@ NUM_TOKENS = 10
 
 @dataclass
 class Score:
-    user_name: str = "default name"
+    player_name: str = "default name"
     time: float = 1000
 
 
