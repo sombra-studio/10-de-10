@@ -2,7 +2,7 @@ from pudu_ui import App, Controller
 from pudu_ui.navigation import Navigator
 
 
-from constants import MAX_SCORES_COUNT, PLAY, WIN
+from constants import MAX_SCORES_COUNT, PLAY, POP_SOUND, WIN
 from game import Game, Score, get_random_tokens
 from screens import PlayScreen
 from utils import format_time, get_highscores, write_highscores
@@ -94,6 +94,9 @@ class PlayController(Controller):
             # model, for now it's all manual
             self.screen.done_label.text = f"{score}/{total}"
             self.screen.done_label.invalidate()
+
+            # TODO FIX THIS
+            self.app.play_sound(POP_SOUND)
         else:
             # Store currently selected token
             self.selected_token_idx = idx
