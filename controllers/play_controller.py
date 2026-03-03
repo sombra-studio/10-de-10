@@ -8,6 +8,9 @@ from screens import PlayScreen
 from utils import format_time, get_highscores, write_highscores
 
 
+SWAP_ANIMATION_TIME = 0.4
+
+
 class PlayController(Controller):
     def __init__(self, app: App, navigator: Navigator):
         self.selected_token_idx = None
@@ -69,10 +72,20 @@ class PlayController(Controller):
             temp = token_widgets[i]
             token_widgets[i] = token_widgets[j]
             token_widgets[j] = temp
+
             self.screen.token_listlayout.invalidate()
             if self.screen.token_listlayout.is_on_focus:
                 self.screen.token_listlayout.get_current_item().focus()
             self.selected_token_idx = None
+
+            # Recompute the list for the new positions
+            self.screen.token_listlayout.recompute()
+
+            # Animate tokens
+            x_i, y_i = token_widgets[i].get_position()
+            x_j, y_j = token_widgets[j].get_position()
+            token_widgets[i].lerp_from_position(x_j, y_j, SWAP_ANIMATION_TIME)
+            token_widgets[j].lerp_from_position(x_i, y_i, SWAP_ANIMATION_TIME)
 
             # Check new score
             score = self.game.get_count()
