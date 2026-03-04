@@ -1,8 +1,13 @@
-from pudu_ui import App, Controller
+from pudu_ui import Controller
 from pudu_ui.navigation import Navigator
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from app import GameApp
 
-
-from constants import MAX_SCORES_COUNT, PLAY, POP_SOUND, WIN
+from constants import (
+    BELL_SOUND, DRUM_SOUND, MAX_SCORES_COUNT, PLAY, POP_SOUND,
+    WIN
+)
 from game import Game, Score, get_random_tokens
 from screens import PlayScreen
 from utils import format_time, get_highscores, write_highscores
@@ -12,12 +17,14 @@ SWAP_ANIMATION_TIME = 0.4
 
 
 class PlayController(Controller):
-    def __init__(self, app: App, navigator: Navigator):
+    def __init__(self, app: "GameApp", navigator: Navigator):
         self.selected_token_idx = None
         self.game = None
         self.user_name = ""
         super().__init__(app=app, name=PLAY)
+        self.app: "GameApp" = app
         self.navigator = navigator
+        self.previous_count = 0
 
     def on_load(self, user_name: str):
         super().on_load()
@@ -29,6 +36,7 @@ class PlayController(Controller):
         start_time = 0.0
 
         self.game = Game(tokens, original_tokens, start_time, user_name)
+        self.previous_count = self.game.get_count()
         if self.game.is_solved():
             # ensure game is not solved
             self.game.swap(0, 9)
@@ -89,13 +97,18 @@ class PlayController(Controller):
 
             # Check new score
             score = self.game.get_count()
+            if self.previous_count > score:
+                self.app.play_sound(BELL_SOUND)
+            elif self.previous_count < score:
+                self.app.play_sound(DRUM_SOUND)
+            self.previous_count = score
+
             total = len(self.game.tokens)
             # There could be a better way of updating UI from changes in the
             # model, for now it's all manual
             self.screen.done_label.text = f"{score}/{total}"
             self.screen.done_label.invalidate()
 
-            # TODO FIX THIS
             self.app.play_sound(POP_SOUND)
         else:
             # Store currently selected token
