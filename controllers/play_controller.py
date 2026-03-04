@@ -97,9 +97,9 @@ class PlayController(Controller):
 
             # Check new score
             score = self.game.get_count()
-            if self.previous_count > score:
+            if score > self.previous_count:
                 self.app.play_sound(BELL_SOUND)
-            elif self.previous_count < score:
+            elif score < self.previous_count:
                 self.app.play_sound(DRUM_SOUND)
             self.previous_count = score
 
