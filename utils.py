@@ -30,11 +30,13 @@ def write_user_name(user_name: str):
     with write_data_file(USER_NAME_FILENAME) as f:
         f.write(user_name)
 
+
 def write_highscores(highscores: list[Score]):
     with write_data_file(HIGHSCORES_FILENAME) as f:
         lines = []
         for score in highscores:
-            lines += [score.player_name, f"{score.time:.2f}"]
+            lines.append(score.player_name + "\n")
+            lines.append(f"{score.time:.2f}\n")
         f.writelines(lines)
 
 
@@ -62,10 +64,11 @@ def get_highscores() -> list[Score]:
             curr_line_is_name = True
             for line in f:
                 if curr_line_is_name:
-                    high_scores[-1].time = float(line)
-                else:
-                    new_score = Score(player_name=line)
+                    new_score = Score(player_name=line[:-1])
                     high_scores.append(new_score)
+                else:
+                    high_scores[-1].time = float(line)
+                curr_line_is_name = not curr_line_is_name
     except IOError:
         pass
     return high_scores
