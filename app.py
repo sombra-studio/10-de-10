@@ -12,27 +12,24 @@ from controllers import (
 )
 
 
+pyglet.resource.path = ['assets/imgs', 'assets/sounds']
+pyglet.resource.reindex()
+
+
 class GameApp(App):
     def __init__(self, is_debug: bool = False):
         super().__init__(
             width=SCREEN_WIDTH, height=SCREEN_HEIGHT, caption=APP_NAME
         )
         self.is_debug = is_debug
-        self.volume = 0.3
+        self.volume = 0.5
         self.navigator = Navigator()
 
         # Init sounds
-        pyglet.resource.path = ['assets/imgs', 'assets/sounds']
         self.sounds = {
-            BELL_SOUND: pyglet.resource.media(
-                "bell.mp3", streaming=False
-            ),
-            DRUM_SOUND: pyglet.resource.media(
-                "drum.mp3", streaming=False
-            ),
-            POP_SOUND: pyglet.resource.media(
-                "pop.mp3", streaming=False
-            )
+            BELL_SOUND: pyglet.resource.media("bell.mp3"),
+            DRUM_SOUND: pyglet.resource.media("drum.mp3"),
+            POP_SOUND: pyglet.resource.media("pop.mp3")
         }
 
         # Initialize controllers
