@@ -22,7 +22,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "pyglet" }]
+requires-dist = [{ name = "pyglet", specifier = "==2.1.13" }]
 
 [[package]]
 name = "pyglet"
