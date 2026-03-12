@@ -24,6 +24,8 @@ class PlayController(Controller):
         super().__init__(app=app, name=PLAY)
         self.app: "GameApp" = app
         self.navigator = navigator
+        self.previous_count = 0
+        self.is_on_pause = False
 
     def on_load(self, user_name: str):
         super().on_load()
