@@ -1,6 +1,8 @@
 from pudu_ui.navigation import Navigator
 from pudu_ui import App
 import pyglet
+from pyglet.event import EVENT_HANDLED, EVENT_UNHANDLED
+from pyglet.window import key
 
 from constants import (
     APP_NAME, BELL_SOUND, DRUM_SOUND, LOGO, MENU, POP_SOUND, SCREEN_HEIGHT,
@@ -70,3 +72,17 @@ class GameApp(App):
         if controller and hasattr(controller, 'update'):
             controller.update(dt)
         super().update(dt)
+
+    def on_key_press(self, symbol: int, modifiers: int):
+        result = self.current_screen.on_key_press(symbol, modifiers)
+        if result == EVENT_HANDLED:
+            return True
+        if symbol == key.ESCAPE and not (
+                modifiers & ~(
+                    key.MOD_NUMLOCK |
+                    key.MOD_CAPSLOCK |
+                    key.MOD_SCROLLLOCK
+                )
+        ):
+            self.dispatch_event('on_close')
+        return EVENT_UNHANDLED

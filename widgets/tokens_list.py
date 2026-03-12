@@ -28,6 +28,9 @@ class TokenList(ListLayout):
         super().__init__(params, batch=batch)
 
     def on_key_press(self, symbol, _) -> EVENT_HANDLE_STATE:
+        if not self.is_focusable:
+            return EVENT_UNHANDLED
+
         if super().on_key_press(symbol, _) == EVENT_UNHANDLED:
             if (
                 symbol == key.ENTER or

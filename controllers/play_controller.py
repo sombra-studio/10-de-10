@@ -5,7 +5,7 @@ if TYPE_CHECKING:
     from app import GameApp
 
 from constants import (
-    BELL_SOUND, DRUM_SOUND, MAX_SCORES_COUNT, PLAY, POP_SOUND,
+    BELL_SOUND, DRUM_SOUND, MAX_SCORES_COUNT, MENU, PLAY, POP_SOUND,
     WIN
 )
 from game import Game, Score, get_random_tokens
@@ -24,7 +24,6 @@ class PlayController(Controller):
         super().__init__(app=app, name=PLAY)
         self.app: "GameApp" = app
         self.navigator = navigator
-        self.previous_count = 0
 
     def on_load(self, user_name: str):
         super().on_load()
@@ -40,14 +39,22 @@ class PlayController(Controller):
         if self.game.is_solved():
             # ensure game is not solved
             self.game.swap(0, 9)
+        self.is_on_pause = False
 
         self.screen = PlayScreen(
-            game=self.game, player_name=user_name,
-            on_select_callback=self.on_select_token
+            game=self.game,
+            player_name=user_name,
+            on_select_callback=self.on_select_token,
+            on_go_to_menu_callback=self.go_to_menu,
+            on_pause_callback=self.pause_game,
+            on_unpause_callback=self.on_unpause_callback
         )
         self.app.set_screen(self.screen)
 
     def update(self, dt: float):
+        if self.is_on_pause:
+            return
+
         if self.game.is_solved():
             self.won()
             return
@@ -55,6 +62,15 @@ class PlayController(Controller):
         self.game.time += dt
         self.screen.time_label.text = format_time(self.game.time)
         self.screen.time_label.invalidate()
+
+    def go_to_menu(self, *_):
+        self.navigator.change(MENU, self.user_name)
+
+    def pause_game(self, *_):
+        self.is_on_pause = True
+        self.screen.is_on_pause = True
+        self.screen.popup.open()
+        self.screen.token_listlayout.is_focusable = False
 
     def on_select_token(self, idx: int):
         n = len(self.game.tokens)
@@ -113,6 +129,12 @@ class PlayController(Controller):
         else:
             # Store currently selected token
             self.selected_token_idx = idx
+
+    def on_unpause_callback(self, *_):
+        self.is_on_pause = False
+        self.screen.is_on_pause = False
+        self.screen.popup.dismiss()
+        self.screen.token_listlayout.is_focusable = True
 
     def won(self):
         # Get the highscores

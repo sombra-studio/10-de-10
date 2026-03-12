@@ -1,6 +1,9 @@
 from collections.abc import Callable
-from pudu_ui import Screen
+from typing import Any
 
+from pudu_ui import Screen, PopUpParams, PopUp
+from pyglet.event import EVENT_HANDLED, EVENT_HANDLE_STATE, EVENT_UNHANDLED
+from pyglet.window import key
 
 from constants import SCREEN_HEIGHT, SCREEN_WIDTH
 from game import Game
@@ -8,15 +11,25 @@ from widgets import InfoLabel, TokenList, TokenWidget
 from utils import format_time
 
 
+POPUP_WIDTH = 400
+POPUP_HEIGHT = 190
+
+
 class PlayScreen(Screen):
     def __init__(
         self,
         game: Game,
         player_name: str,
-        on_select_callback: Callable[[int], None] = lambda l: None
+        on_select_callback: Callable[[int], None] = lambda l: None,
+        on_go_to_menu_callback: Callable[Any, None] = lambda l: None,
+        on_pause_callback: Callable[Any, None] = lambda l: None,
+        on_unpause_callback: Callable[Any, None] = lambda l: None
     ):
         super().__init__('PlayScreen')
         self.is_ready = False
+        self.is_on_pause = False
+        self.on_pause_callback = on_pause_callback
+        self.on_unpause_callback = on_unpause_callback
 
         # Init UI
 
@@ -51,9 +64,24 @@ class PlayScreen(Screen):
             )
             self.token_listlayout.add(token_widget)
 
+        # Pause popup
+        popup_params = PopUpParams(
+            x=SCREEN_WIDTH // 2 - POPUP_WIDTH // 2,
+            y=SCREEN_HEIGHT // 2 - POPUP_HEIGHT // 2,
+            width=POPUP_WIDTH,
+            height=POPUP_HEIGHT,
+            title="Pausa",
+            opt1_text="Volver al juego",
+            opt1_callback=on_unpause_callback,
+            opt2_text="Ir al menu",
+            opt2_callback=on_go_to_menu_callback
+        )
+        self.popup = PopUp(params=popup_params, batch=self.batch)
+
         self.widgets.append(self.token_listlayout)
         self.widgets.append(self.time_label)
         self.widgets.append(self.done_label)
+        self.widgets.append(self.popup)
 
         self.token_listlayout.focus()
     
@@ -66,3 +94,16 @@ class PlayScreen(Screen):
     def draw(self):
         if self.is_ready:
             super().draw()
+
+    def on_key_press(self, symbol, _) -> EVENT_HANDLE_STATE:
+        result = super().on_key_press(symbol, _)
+        if result == EVENT_HANDLED:
+            return True
+
+        if symbol == key.ESCAPE:
+            if self.is_on_pause:
+                self.on_unpause_callback()
+            else:
+                self.on_pause_callback()
+            return True
+        return EVENT_UNHANDLED
