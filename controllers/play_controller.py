@@ -148,6 +148,7 @@ class PlayController(Controller):
                 new_score = Score(self.user_name, self.game.time)
                 highscores.insert(i, new_score)
                 score_added = True
+                break
 
         if len(highscores) < MAX_SCORES_COUNT and not score_added:
             new_score = Score(self.user_name, self.game.time)
