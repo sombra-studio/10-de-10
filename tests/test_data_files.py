@@ -53,6 +53,20 @@ class DataFilesTestCase(unittest.TestCase):
                 raise Exception(
                     f"Couldn't write back {filename} after testing"
                 )
+        else:
+            # Remove the file created for this test
+            try:
+                os.remove(filename)
+                print(f"File '{filename}' has been deleted.")
+            except FileNotFoundError:
+                print(f"Error: The file '{filename}' does not exist.")
+            except PermissionError:
+                print(
+                    f"Error: Permission denied to delete the file '{filename}'."
+                )
+            except OSError as e:
+                print(f"Error occurred: {e.strerror}")
+
 
     def test_user_name(self):
         folder = pyglet.resource.get_data_path(APP_NAME)
@@ -84,6 +98,19 @@ class DataFilesTestCase(unittest.TestCase):
                 raise Exception(
                     f"Couldn't write back {filename} after testing"
                 )
+        else:
+            # Remove the file created for this test
+            try:
+                os.remove(filename)
+                print(f"File '{filename}' has been deleted.")
+            except FileNotFoundError:
+                print(f"Error: The file '{filename}' does not exist.")
+            except PermissionError:
+                print(
+                    f"Error: Permission denied to delete the file '{filename}'."
+                )
+            except OSError as e:
+                print(f"Error occurred: {e.strerror}")
 
 
 if __name__ == '__main__':
