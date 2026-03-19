@@ -6,9 +6,11 @@ import os
 
 from constants import APP_NAME
 from game import Score
+from settings import Languages, Settings
 
 
 HIGHSCORES_FILENAME = "highscores.txt"
+SETTINGS_FILENAME = "settings.txt"
 USER_NAME_FILENAME = "user_name.txt"
 
 
@@ -26,11 +28,6 @@ def write_data_file(filename: str) -> TextIOWrapper:
     return file
 
 
-def write_user_name(user_name: str):
-    with write_data_file(USER_NAME_FILENAME) as f:
-        f.write(user_name)
-
-
 def write_highscores(highscores: list[Score]):
     with write_data_file(HIGHSCORES_FILENAME) as f:
         lines = []
@@ -38,6 +35,24 @@ def write_highscores(highscores: list[Score]):
             lines.append(score.player_name + "\n")
             lines.append(f"{score.time:.2f}\n")
         f.writelines(lines)
+
+
+def write_settings(settings: Settings):
+    folder = pyglet.resource.get_settings_path(APP_NAME)
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    filename = os.path.join(folder, SETTINGS_FILENAME)
+    with open(filename, 'wt') as f:
+        f.write(
+            f"{settings.audio_volume}\n"
+            f"{"m" if settings.muted else " "}\n"
+            f"{settings.language}"
+        )
+
+
+def write_user_name(user_name: str):
+    with write_data_file(USER_NAME_FILENAME) as f:
+        f.write(user_name)
 
 
 def get_highscores() -> list[Score]:
@@ -72,6 +87,26 @@ def get_highscores() -> list[Score]:
     except IOError:
         pass
     return high_scores
+
+
+def get_settings() -> Settings:
+    folder = pyglet.resource.get_settings_path(APP_NAME)
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    filename = os.path.join(folder, SETTINGS_FILENAME)
+    try:
+        with open(filename, 'rt') as f:
+            lines = [line.strip() for line in f]
+            settings = Settings(
+                int(lines[0]),
+                lines[1] == 'm',
+                Languages(lines[2])
+            )
+            return settings
+
+    except IOError:
+        settings = Settings()
+    return settings
 
 
 def get_user_name() -> str:

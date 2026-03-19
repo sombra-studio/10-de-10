@@ -12,7 +12,7 @@ from controllers import (
     EditNameController, HighscoresController, LogoController, MenuController,
     PlayController, WinController
 )
-
+from utils import get_settings
 
 pyglet.resource.path = ['assets/imgs', 'assets/sounds']
 pyglet.resource.reindex()
@@ -24,7 +24,7 @@ class GameApp(App):
             width=SCREEN_WIDTH, height=SCREEN_HEIGHT, caption=APP_NAME
         )
         self.is_debug = is_debug
-        self.volume = 0.5
+        self.settings = get_settings()
         self.navigator = Navigator()
 
         # Init sounds
@@ -62,10 +62,9 @@ class GameApp(App):
     def play_sound(self, sound_name: str) -> pyglet.media.Player | None:
         if sound_name in self.sounds:
             player = self.sounds[sound_name].play()
-            player.volume = self.volume
+            player.volume = self.settings.audio_volume
             return player
         return None
-
 
     def update(self, dt):
         controller = self.navigator.current_controller
