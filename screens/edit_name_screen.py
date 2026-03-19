@@ -4,6 +4,7 @@ from pyglet.gui import TextEntry
 from constants import SCREEN_WIDTH
 from widgets import CancelButton, ContinueButton, Title
 
+
 TEXT_ENTRY_WIDTH = 150
 TEXT_ENTRY_HEIGHT = 32
 TEXT_ENTRY_X = int(SCREEN_WIDTH / 2 - TEXT_ENTRY_WIDTH / 2)

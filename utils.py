@@ -94,6 +94,7 @@ def get_settings() -> Settings:
     if not os.path.exists(folder):
         os.makedirs(folder)
     filename = os.path.join(folder, SETTINGS_FILENAME)
+    settings = Settings()
     try:
         with open(filename, 'rt') as f:
             lines = [line.strip() for line in f]
@@ -103,9 +104,8 @@ def get_settings() -> Settings:
                 Languages(lines[2])
             )
             return settings
-
     except IOError:
-        settings = Settings()
+        pass
     return settings
 
 
