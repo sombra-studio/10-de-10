@@ -1,4 +1,4 @@
-from widgets.buttons import BackButton, CancelButton, ContinueButton
+from widgets.buttons import CancelButton, ContinueButton
 from widgets.info_label import InfoLabel
 from widgets.score_row_widget import ScoreRowParams, ScoreRowWidget
 from widgets.title import Title

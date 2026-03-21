@@ -1,8 +1,11 @@
+import json
+import os
 from pudu_ui.navigation import Navigator
 from pudu_ui import App
 import pyglet
 from pyglet.event import EVENT_HANDLED, EVENT_UNHANDLED
 from pyglet.window import key
+
 
 from constants import (
     APP_NAME, BELL_SOUND, DRUM_SOUND, LOGO, MENU, POP_SOUND, SCREEN_HEIGHT,
@@ -12,10 +15,19 @@ from controllers import (
     EditNameController, HighscoresController, LogoController, MenuController,
     PlayController, WinController
 )
+from enums import Languages
 from utils import get_settings
 
-pyglet.resource.path = ['assets/imgs', 'assets/sounds']
+
+pyglet.resource.path = ['assets/imgs', 'assets/sounds', 'locales']
 pyglet.resource.reindex()
+
+
+LANGUAGES_MAP = {
+    Languages.EN: "en",
+    Languages.ES: "es",
+    Languages.FR: "fr"
+}
 
 
 class GameApp(App):
@@ -26,6 +38,10 @@ class GameApp(App):
         self.is_debug = is_debug
         self.settings = get_settings()
         self.navigator = Navigator()
+        self.words = {}
+
+        # Init language strings
+        self.set_language()
 
         # Init sounds
         self.sounds = {
@@ -85,3 +101,21 @@ class GameApp(App):
         ):
             self.dispatch_event('on_close')
         return EVENT_UNHANDLED
+
+    def set_language(self):
+        folder_path = LANGUAGES_MAP[self.settings.language]
+        # load locales strings
+        try:
+            filename = os.path.join(folder_path, "strings.json")
+            with pyglet.resource.file(filename) as f:
+                self.words = json.load(f)
+        except FileNotFoundError:
+            print(
+                f"Could not find file strings.json for language "
+                f"{self.settings.language}"
+            )
+        except json.JSONDecodeError as e:
+            print(f"Error: Decoding language file {e}")
+
+    def get_text(self, text: str):
+        return self.words.get(text, "TEXT_NOT_FOUND")

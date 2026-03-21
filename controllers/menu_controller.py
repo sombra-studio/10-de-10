@@ -1,6 +1,12 @@
 from pudu_ui.navigation import Navigator
-from pudu_ui import App, Button, Controller
+from pudu_ui import Button, Controller
 import pyglet.app
+from typing import TYPE_CHECKING
+
+
+if TYPE_CHECKING:
+    from app import GameApp
+
 
 from constants import EDIT_NAME, HIGHSCORES, MENU, PLAY
 from screens import MenuScreen
@@ -8,8 +14,9 @@ from utils import get_user_name
 
 
 class MenuController(Controller):
-    def __init__(self, app: App, navigator: Navigator):
+    def __init__(self, app: "GameApp", navigator: Navigator):
         super().__init__(app=app, name=MENU)
+        self.app: "GameApp" = app
         self.navigator = navigator
         self.button_maps = [
             self.play,
@@ -28,7 +35,7 @@ class MenuController(Controller):
         self.user_name = user_name
 
         # Load screen
-        self.screen = MenuScreen()
+        self.screen = MenuScreen(get_text=self.app.get_text)
         self.app.set_screen(self.screen)
 
         # Set on press for buttons

@@ -18,3 +18,17 @@ DRUM_SOUND = "Drum"
 POP_SOUND = "Pop"
 
 MAX_SCORES_COUNT = 10
+
+# Strings
+BACK_TO_GAME_S = "Back to game"
+BEST_TIMES_S = "Best Times"
+CANCEL_S = "Cancel"
+CONTINUE_S = "Continue"
+EDIT_NAME_S = "Edit Name"
+GO_TO_MENU_S = "Go to menu"
+QUIT_S = "Quit"
+PAUSE_S = "Pause"
+PLAY_S = "Play"
+SETTINGS_S = "Settings"
+YOUR_TIME_S = "Your time"
+YOU_WIN_S = "You win"

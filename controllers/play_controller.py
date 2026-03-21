@@ -46,6 +46,7 @@ class PlayController(Controller):
         self.screen = PlayScreen(
             game=self.game,
             player_name=user_name,
+            get_text=self.app.get_text,
             on_select_callback=self.on_select_token,
             on_go_to_menu_callback=self.go_to_menu,
             on_pause_callback=self.pause_game,

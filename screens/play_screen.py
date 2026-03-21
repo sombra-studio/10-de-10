@@ -5,7 +5,10 @@ from pudu_ui import Screen, PopUpParams, PopUp
 from pyglet.event import EVENT_HANDLED, EVENT_HANDLE_STATE, EVENT_UNHANDLED
 from pyglet.window import key
 
-from constants import SCREEN_HEIGHT, SCREEN_WIDTH
+from constants import (
+    BACK_TO_GAME_S, GO_TO_MENU_S, PAUSE_S, SCREEN_HEIGHT,
+    SCREEN_WIDTH
+)
 from game import Game
 from widgets import InfoLabel, TokenList, TokenWidget
 from utils import format_time
@@ -20,6 +23,7 @@ class PlayScreen(Screen):
         self,
         game: Game,
         player_name: str,
+        get_text: Callable[str, str],
         on_select_callback: Callable[[int], None] = lambda l: None,
         on_go_to_menu_callback: Callable[Any, None] = lambda l: None,
         on_pause_callback: Callable[Any, None] = lambda l: None,
@@ -70,10 +74,10 @@ class PlayScreen(Screen):
             y=SCREEN_HEIGHT // 2 - POPUP_HEIGHT // 2,
             width=POPUP_WIDTH,
             height=POPUP_HEIGHT,
-            title="Pausa",
-            opt1_text="Volver al juego",
+            title=get_text(PAUSE_S),
+            opt1_text=get_text(BACK_TO_GAME_S),
             opt1_callback=on_unpause_callback,
-            opt2_text="Ir al menu",
+            opt2_text=get_text(GO_TO_MENU_S),
             opt2_callback=on_go_to_menu_callback
         )
         self.popup = PopUp(params=popup_params, batch=self.batch)

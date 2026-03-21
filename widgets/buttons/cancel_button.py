@@ -10,7 +10,6 @@ from widgets.buttons import SecondaryButton
 DIST_TO_CENTER = 120
 BUTTON_X = SCREEN_WIDTH / 2 - DIST_TO_CENTER - styles.buttons.BUTTON_WIDTH / 2
 BUTTON_Y = 80
-BUTTON_TEXT = "Cancelar"
 
 
 class CancelButton(SecondaryButton):
@@ -18,7 +17,6 @@ class CancelButton(SecondaryButton):
         params = ButtonParams(
             x=BUTTON_X, y=BUTTON_Y,
             width=styles.buttons.BUTTON_WIDTH,
-            height=styles.buttons.BUTTON_HEIGHT,
-            text=BUTTON_TEXT
+            height=styles.buttons.BUTTON_HEIGHT
         )
         super().__init__(params=params, batch=batch)

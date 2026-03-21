@@ -8,7 +8,6 @@ import styles
 
 
 BUTTON_X = SCREEN_WIDTH / 2 + DIST_TO_CENTER - styles.buttons.BUTTON_WIDTH / 2
-BUTTON_TEXT = "Continuar"
 
 
 class ContinueButton(Button):
@@ -16,7 +15,6 @@ class ContinueButton(Button):
         params = ButtonParams(
             x=BUTTON_X, y=BUTTON_Y,
             width=styles.buttons.BUTTON_WIDTH,
-            height=styles.buttons.BUTTON_HEIGHT,
-            text=BUTTON_TEXT
+            height=styles.buttons.BUTTON_HEIGHT
         )
         super().__init__(params=params, batch=batch)

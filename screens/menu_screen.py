@@ -1,22 +1,26 @@
+from collections.abc import Callable
+
 from pudu_ui.layouts import ListLayout, ListLayoutParams, ListDirection
 from pudu_ui import Button, ButtonParams, Screen
 
-
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from constants import (
+    BEST_TIMES_S, EDIT_NAME_S, PLAY_S, QUIT_S, SCREEN_WIDTH,
+    SCREEN_HEIGHT, SETTINGS_S
+)
 from widgets import Title
 
 
-OPTIONS = ["Jugar", "Editar Nombre", "Puntajes", "Opciones", "Salir"]
+
 GAME_TITLE = "array.sort"
 MENU_WIDTH = 250
 MENU_ITEM_HEIGHT = 50
 INTER_ITEM_SPACING = 20
-N = len(OPTIONS)
+N = 5   # Number of menu options
 MENU_HEIGHT = int(MENU_ITEM_HEIGHT * N + INTER_ITEM_SPACING * (N - 1))
 
 
 class MenuScreen(Screen):
-    def __init__(self):
+    def __init__(self, get_text: Callable[str, str]):
         super().__init__("Menu")
 
         # Title
@@ -33,7 +37,14 @@ class MenuScreen(Screen):
         self.list_layout = ListLayout(params, batch=self.batch)
 
         button_params = ButtonParams()
-        for option in OPTIONS:
+        options = [
+            get_text(PLAY_S),
+            get_text(EDIT_NAME_S),
+            get_text(BEST_TIMES_S),
+            get_text(SETTINGS_S),
+            get_text(QUIT_S)
+        ]
+        for option in options:
             button_params.text = option
             new_button = Button(params=button_params, batch=self.batch)
             self.list_layout.add(new_button)
