@@ -10,6 +10,7 @@ HIGHSCORES = "Highscores"
 LOGO = "Logo"
 MENU = "Menu"
 PLAY = "Play"
+SETTINGS = "Settings"
 WIN = "Win"
 
 # Sounds
@@ -20,6 +21,7 @@ POP_SOUND = "Pop"
 MAX_SCORES_COUNT = 10
 
 # Strings
+AUDIO_VOLUME_S = "Audio volume"
 BACK_TO_GAME_S = "Back to game"
 BEST_TIMES_S = "Best Times"
 CANCEL_S = "Cancel"

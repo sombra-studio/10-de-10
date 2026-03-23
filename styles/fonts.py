@@ -1,5 +1,5 @@
 import pudu_ui
-
+import pyglet.text
 
 FONT_COLOR =  pudu_ui.colors.WHITE
 
@@ -19,4 +19,10 @@ def h2():
 def p1():
     style = pudu_ui.styles.fonts.p1()
     style.color = FONT_COLOR
+    return style
+
+
+def b1():
+    style = p1()
+    style.weight = pyglet.text.Weight.BOLD
     return style

@@ -6,4 +6,4 @@ from enums import Languages
 class Settings:
     audio_volume: int = 80
     muted: bool = False
-    language: Languages = Languages.ES
+    language: Languages = Languages.EN

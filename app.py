@@ -13,7 +13,7 @@ from constants import (
 )
 from controllers import (
     EditNameController, HighscoresController, LogoController, MenuController,
-    PlayController, WinController
+    PlayController, SettingsController, WinController
 )
 from enums import Languages
 from utils import get_settings
@@ -65,6 +65,9 @@ class GameApp(App):
 
         play_controller = PlayController(self, self.navigator)
         self.navigator.add_controller(play_controller)
+
+        settings_controller = SettingsController(self, self.navigator)
+        self.navigator.add_controller(settings_controller)
 
         win_controller = WinController(self, self.navigator)
         self.navigator.add_controller(win_controller)

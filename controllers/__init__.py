@@ -3,4 +3,5 @@ from controllers.highscores_controller import HighscoresController
 from controllers.logo_controller import LogoController
 from controllers.menu_controller import MenuController
 from controllers.play_controller import PlayController
+from controllers.settings_controller import SettingsController
 from controllers.win_controller import WinController
