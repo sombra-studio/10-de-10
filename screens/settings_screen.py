@@ -3,18 +3,21 @@ from pudu_ui import Screen
 from pudu_ui.layouts import ListDirection, ListLayout, ListLayoutParams
 
 from constants import (
-    AUDIO_VOLUME_S, CANCEL_S, CONTINUE_S, SCREEN_WIDTH,
+    AUDIO_ON_S, AUDIO_VOLUME_S, CANCEL_S, CONTINUE_S, SCREEN_WIDTH,
     SETTINGS, SETTINGS_S
 )
 from settings import Settings
 from styles.buttons import BUTTON_HEIGHT
-from widgets import CancelButton, ContinueButton, SliderSetting, Title
+from widgets import (
+    CancelButton, ContinueButton, SliderSetting, Title, ToggleSetting
+)
 from widgets.buttons.cancel_button import BUTTON_Y
 
 
-LIST_WIDTH = 600
+LIST_WIDTH = 800
 LIST_HEIGHT = 350
 LIST_Y = BUTTON_Y + BUTTON_HEIGHT + 20
+INTER_ITEM_SPACING = 12
 
 
 class SettingsScreen(Screen):
@@ -29,7 +32,8 @@ class SettingsScreen(Screen):
             width=LIST_WIDTH,
             height=LIST_HEIGHT,
             direction=ListDirection.VERTICAL,
-            resizes_item_width=False,
+            inter_item_spacing=INTER_ITEM_SPACING,
+            resizes_item_width=True,
             resizes_item_height=False
         )
         self.layout = ListLayout(params=layout_params, batch=self.batch)
@@ -41,7 +45,16 @@ class SettingsScreen(Screen):
             batch=self.batch
         )
 
+        # Audio on setting
+        self.audio_on_setting = ToggleSetting(
+            label_str=get_text(AUDIO_ON_S),
+            is_on=not settings.muted,
+            batch=self.batch
+        )
+        self.audio_on_setting.set_debug_mode()
+
         self.layout.add(self.audio_volume_setting)
+        self.layout.add(self.audio_on_setting)
         self.widgets.append(self.layout)
 
         # Continue and cancel buttons

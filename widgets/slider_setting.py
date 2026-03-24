@@ -6,17 +6,19 @@ from pyglet.graphics import Batch
 
 from styles.fonts import b1, p1
 
-LABEL_WIDTH = 200
-SLIDER_X = LABEL_WIDTH + 50
-SLIDER_WIDTH = 250
-VALUE_X = SLIDER_X + SLIDER_WIDTH + 20
-HEIGHT = 48
 
+LABEL_WIDTH = 200
+SLIDER_WIDTH = 250
+HEIGHT = 48
+RIGHT_MARGIN = 10
+SLIDER_VALUE_MARGIN = 20
 
 class SliderSetting(Widget):
     def __init__(self, label_str: str, value: float, batch: Batch):
         params = Params(height=HEIGHT)
-        super().__init__(params=params)
+        super().__init__(
+            params=params, batch=batch
+        )
         label_params = LabelParams(
             width=LABEL_WIDTH, height=self.height, text=label_str,
             resize_type=LabelResizeType.FIT, style=b1()
@@ -24,16 +26,17 @@ class SliderSetting(Widget):
         self.label = Label(label_params, batch=batch, parent=self)
 
         slider_params = SliderParams(
-            x=SLIDER_X, width=SLIDER_WIDTH,
+            width=SLIDER_WIDTH,
             value=value, on_value_changed=self.on_value_changed
         )
         self.slider = Slider(slider_params, batch=batch, parent=self)
 
         value_label_params = LabelParams(
-            x=VALUE_X, height=self.height, text=f"{value}",
+            height=self.height, text=f"{value}",
             resize_type=LabelResizeType.FIT, style=p1()
         )
         self.value_label = Label(value_label_params, batch=batch, parent=self)
+        self.value_label.width = 60
 
         self.children.append(self.label)
         self.children.append(self.slider)
@@ -55,3 +58,10 @@ class SliderSetting(Widget):
 
     def on_mouse_drag(self, *args) -> bool:
         return self.slider.on_mouse_drag(*args)
+
+    def recompute(self):
+        super().recompute()
+        self.value_label.x = self.width - RIGHT_MARGIN - self.value_label.width
+        self.slider.x = (
+            self.value_label.x - SLIDER_VALUE_MARGIN - self.slider.width
+        )

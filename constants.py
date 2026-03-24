@@ -22,6 +22,7 @@ MAX_SCORES_COUNT = 10
 
 # Strings
 AUDIO_VOLUME_S = "Audio volume"
+AUDIO_ON_S = "Audio on"
 BACK_TO_GAME_S = "Back to game"
 BEST_TIMES_S = "Best Times"
 CANCEL_S = "Cancel"
