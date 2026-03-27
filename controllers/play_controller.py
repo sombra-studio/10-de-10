@@ -109,8 +109,8 @@ class PlayController(Controller):
             self.screen.token_listlayout.recompute()
 
             # Animate tokens
-            x_i, y_i = token_widgets[i].get_position()
-            x_j, y_j = token_widgets[j].get_position()
+            x_i, y_i = token_widgets[i].x, token_widgets[i].y
+            x_j, y_j = token_widgets[j].x, token_widgets[j].y
             token_widgets[i].lerp_from_position(x_j, y_j, SWAP_ANIMATION_TIME)
             token_widgets[j].lerp_from_position(x_i, y_i, SWAP_ANIMATION_TIME)
 
