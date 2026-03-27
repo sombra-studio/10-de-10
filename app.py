@@ -79,6 +79,10 @@ class GameApp(App):
             self.navigator.change(MENU)
 
     def play_sound(self, sound_name: str) -> pyglet.media.AudioPlayer | None:
+        if self.settings.muted:
+            # Ignore this method if muted
+            return None
+
         if sound_name in self.sounds:
             player = self.sounds[sound_name].play()
             player.volume = self.settings.audio_volume / 100.0
