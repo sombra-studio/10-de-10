@@ -1,5 +1,6 @@
 import pudu_ui
-import pyglet.text
+from pyglet.enums import Weight
+
 
 FONT_COLOR =  pudu_ui.colors.WHITE
 
@@ -24,5 +25,5 @@ def p1():
 
 def b1():
     style = p1()
-    style.weight = pyglet.text.Weight.BOLD
+    style.weight = Weight.BOLD
     return style

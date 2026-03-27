@@ -45,9 +45,9 @@ class GameApp(App):
 
         # Init sounds
         self.sounds = {
-            BELL_SOUND: pyglet.resource.media("bell.wav", streaming=False),
-            DRUM_SOUND: pyglet.resource.media("drum.wav", streaming=False),
-            POP_SOUND: pyglet.resource.media("pop.wav", streaming=False)
+            BELL_SOUND: pyglet.resource.audio("bell.wav", streaming=False),
+            DRUM_SOUND: pyglet.resource.audio("drum.wav", streaming=False),
+            POP_SOUND: pyglet.resource.audio("pop.wav", streaming=False)
         }
 
         # Initialize controllers
