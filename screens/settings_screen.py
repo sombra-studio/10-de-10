@@ -51,7 +51,10 @@ class SettingsScreen(Screen):
             is_on=not settings.muted,
             batch=self.batch
         )
-        self.audio_on_setting.set_debug_mode()
+
+        # Language setting
+        # This will be implemented later
+        self.language = settings.language
 
         self.layout.add(self.audio_volume_setting)
         self.layout.add(self.audio_on_setting)
@@ -68,3 +71,11 @@ class SettingsScreen(Screen):
 
         self.widgets.append(self.button)
         self.widgets.append(self.cancel_button)
+
+    def get_settings(self) -> Settings:
+        settings = Settings(
+            audio_volume=int(self.audio_volume_setting.value),
+            muted=not self.audio_on_setting.toggle.is_on,
+            language=self.language
+        )
+        return settings

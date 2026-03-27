@@ -9,7 +9,6 @@ from styles.fonts import b1, p1
 
 LABEL_WIDTH = 200
 SLIDER_WIDTH = 250
-RIGHT_MARGIN = 10
 SLIDER_VALUE_MARGIN = 20
 
 
@@ -29,7 +28,7 @@ class SliderSetting(Widget):
         self.slider = Slider(slider_params, batch=batch, parent=self)
 
         value_label_params = LabelParams(
-            text=f"{value}",
+            x=self.width, anchor_x='right', text=f"{value}",
             resize_type=LabelResizeType.FIT, style=p1()
         )
         self.value_label = Label(value_label_params, batch=batch, parent=self)
@@ -58,9 +57,10 @@ class SliderSetting(Widget):
 
     def recompute(self):
         super().recompute()
-        self.value_label.x = self.width - RIGHT_MARGIN - self.value_label.width
+        self.value_label.x = self.width
         self.slider.x = (
-            self.value_label.x - SLIDER_VALUE_MARGIN - self.slider.width
+            self.width - self.value_label.impl.content_width -
+            SLIDER_VALUE_MARGIN - self.slider.width
         )
         self.label.height = self.height
         self.value_label.height = self.height

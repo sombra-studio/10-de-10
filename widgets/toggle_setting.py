@@ -8,7 +8,6 @@ from styles.fonts import b1
 
 
 LABEL_WIDTH = 200
-RIGHT_MARGIN = 10
 
 
 class ToggleSetting(Widget):
@@ -21,7 +20,7 @@ class ToggleSetting(Widget):
         self.label = Label(params=label_params, batch=batch, parent=self)
 
         toggle_params = ToggleParams(is_on=is_on)
-        toggle_params.x = self.width - RIGHT_MARGIN - toggle_params.width
+        toggle_params.x = self.width - toggle_params.width
         self.toggle = Toggle(params=toggle_params, batch=batch, parent=self)
 
         self.children.append(self.label)
@@ -29,7 +28,7 @@ class ToggleSetting(Widget):
 
     def recompute(self):
         super().recompute()
-        self.toggle.x = self.width - RIGHT_MARGIN - self.toggle.width
+        self.toggle.x = self.width - self.toggle.width
         self.label.height = self.height
 
     # Defer events to toggle widget
