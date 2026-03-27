@@ -1,4 +1,4 @@
-from pudu_ui import Label, LabelParams, Params, Slider, SliderParams, Widget
+from pudu_ui import Label, LabelParams, Slider, SliderParams, Widget
 from pudu_ui.label import LabelResizeType
 from pyglet.event import EVENT_HANDLE_STATE
 from pyglet.graphics import Batch
@@ -9,18 +9,15 @@ from styles.fonts import b1, p1
 
 LABEL_WIDTH = 200
 SLIDER_WIDTH = 250
-HEIGHT = 48
 RIGHT_MARGIN = 10
 SLIDER_VALUE_MARGIN = 20
 
+
 class SliderSetting(Widget):
     def __init__(self, label_str: str, value: float, batch: Batch):
-        params = Params(height=HEIGHT)
-        super().__init__(
-            params=params, batch=batch
-        )
+        super().__init__(batch=batch)
         label_params = LabelParams(
-            width=LABEL_WIDTH, height=self.height, text=label_str,
+            width=LABEL_WIDTH, text=label_str,
             resize_type=LabelResizeType.FIT, style=b1()
         )
         self.label = Label(label_params, batch=batch, parent=self)
@@ -32,7 +29,7 @@ class SliderSetting(Widget):
         self.slider = Slider(slider_params, batch=batch, parent=self)
 
         value_label_params = LabelParams(
-            height=self.height, text=f"{value}",
+            text=f"{value}",
             resize_type=LabelResizeType.FIT, style=p1()
         )
         self.value_label = Label(value_label_params, batch=batch, parent=self)
@@ -65,3 +62,5 @@ class SliderSetting(Widget):
         self.slider.x = (
             self.value_label.x - SLIDER_VALUE_MARGIN - self.slider.width
         )
+        self.label.height = self.height
+        self.value_label.height = self.height

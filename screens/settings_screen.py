@@ -18,6 +18,7 @@ LIST_WIDTH = 800
 LIST_HEIGHT = 350
 LIST_Y = BUTTON_Y + BUTTON_HEIGHT + 20
 INTER_ITEM_SPACING = 12
+ITEM_HEIGHT = 48
 
 
 class SettingsScreen(Screen):
@@ -33,8 +34,7 @@ class SettingsScreen(Screen):
             height=LIST_HEIGHT,
             direction=ListDirection.VERTICAL,
             inter_item_spacing=INTER_ITEM_SPACING,
-            resizes_item_width=True,
-            resizes_item_height=False
+            item_height=ITEM_HEIGHT
         )
         self.layout = ListLayout(params=layout_params, batch=self.batch)
 

@@ -1,11 +1,10 @@
-from pudu_ui import Label, LabelParams, Params, Toggle, ToggleParams, Widget
+from pudu_ui import Label, LabelParams, Toggle, ToggleParams, Widget
 from pudu_ui.label import LabelResizeType
 from pyglet.event import EVENT_HANDLE_STATE
 from pyglet.graphics import Batch
 
 
 from styles.fonts import b1
-from widgets.slider_setting import HEIGHT
 
 
 LABEL_WIDTH = 200
@@ -14,10 +13,9 @@ RIGHT_MARGIN = 10
 
 class ToggleSetting(Widget):
     def __init__(self, label_str: str, is_on: bool, batch: Batch):
-        params = Params(height=HEIGHT)
-        super().__init__(params=params, batch=batch)
+        super().__init__(batch=batch)
         label_params = LabelParams(
-            width=LABEL_WIDTH, height=self.height,
+            width=LABEL_WIDTH,
             text=label_str, resize_type=LabelResizeType.FIT, style=b1()
         )
         self.label = Label(params=label_params, batch=batch, parent=self)
@@ -32,6 +30,7 @@ class ToggleSetting(Widget):
     def recompute(self):
         super().recompute()
         self.toggle.x = self.width - RIGHT_MARGIN - self.toggle.width
+        self.label.height = self.height
 
     # Defer events to toggle widget
 
