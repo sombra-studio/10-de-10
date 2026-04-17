@@ -4,14 +4,14 @@ from pudu_ui.layouts import ListLayout, ListLayoutParams, ListDirection
 from pudu_ui import Button, ButtonParams, Screen
 
 from constants import (
-    BEST_TIMES_S, EDIT_NAME_S, PLAY_S, QUIT_S, SCREEN_WIDTH,
+    APP_NAME, BEST_TIMES_S, EDIT_NAME_S, PLAY_S, QUIT_S, SCREEN_WIDTH,
     SCREEN_HEIGHT, SETTINGS_S
 )
 from widgets import Title
 
 
 
-GAME_TITLE = "array.sort"
+GAME_TITLE = APP_NAME
 MENU_WIDTH = 250
 MENU_ITEM_HEIGHT = 50
 INTER_ITEM_SPACING = 20

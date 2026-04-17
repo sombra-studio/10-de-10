@@ -1,4 +1,5 @@
 from widgets.buttons import CancelButton, ContinueButton
+from widgets.dropdown_setting import DropdownSetting
 from widgets.info_label import InfoLabel
 from widgets.score_row_widget import ScoreRowParams, ScoreRowWidget
 from widgets.slider_setting import SliderSetting

@@ -3,13 +3,15 @@ from pudu_ui import Screen
 from pudu_ui.layouts import ListDirection, ListLayout, ListLayoutParams
 
 from constants import (
-    AUDIO_ON_S, AUDIO_VOLUME_S, CANCEL_S, CONTINUE_S, SCREEN_WIDTH,
+    AUDIO_ON_S, AUDIO_VOLUME_S, CANCEL_S, CONTINUE_S, LANGUAGE_S, SCREEN_WIDTH,
     SETTINGS, SETTINGS_S
 )
+from enums import Languages
 from settings import Settings
 from styles.buttons import BUTTON_HEIGHT
 from widgets import (
-    CancelButton, ContinueButton, SliderSetting, Title, ToggleSetting
+    CancelButton, ContinueButton, DropdownSetting, SliderSetting, Title,
+    ToggleSetting
 )
 from widgets.buttons.cancel_button import BUTTON_Y
 
@@ -53,11 +55,16 @@ class SettingsScreen(Screen):
         )
 
         # Language setting
-        # This will be implemented later
-        self.language = settings.language
+        self.language_setting = DropdownSetting(
+            label_str=get_text(LANGUAGE_S),
+            curr_language=settings.language,
+            languages=[language for language in Languages],
+            batch=self.batch
+        )
 
         self.layout.add(self.audio_volume_setting)
         self.layout.add(self.audio_on_setting)
+        self.layout.add(self.language_setting)
         self.widgets.append(self.layout)
 
         # Continue and cancel buttons
@@ -76,6 +83,6 @@ class SettingsScreen(Screen):
         settings = Settings(
             audio_volume=int(self.audio_volume_setting.value),
             muted=not self.audio_on_setting.toggle.is_on,
-            language=self.language
+            language=Languages(self.language_setting.language)
         )
         return settings

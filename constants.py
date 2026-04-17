@@ -1,4 +1,4 @@
-APP_NAME = "array.sort"
+APP_NAME = "10 de 10"
 
 
 SCREEN_WIDTH = 1280
@@ -29,6 +29,7 @@ CANCEL_S = "Cancel"
 CONTINUE_S = "Continue"
 EDIT_NAME_S = "Edit Name"
 GO_TO_MENU_S = "Go to menu"
+LANGUAGE_S = "Language"
 QUIT_S = "Quit"
 PAUSE_S = "Pause"
 PLAY_S = "Play"
