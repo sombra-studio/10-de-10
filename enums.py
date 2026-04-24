@@ -5,3 +5,4 @@ class Languages(StrEnum):
     ES = "Spanish"
     EN = "English"
     FR = "French"
+    HU = "Hungarian"
