@@ -28,7 +28,7 @@ class WinScreen(Screen):
         self.win_label = Label(win_label_params, batch=self.batch)
 
         time_label_style = h2()
-        time_text = get_text(YOUR_TIME_S) + f"{format_time(time)}"
+        time_text = get_text(YOUR_TIME_S) + f" {format_time(time)}"
         time_label_y = win_label_y - TIME_LABEL_MARGIN_Y
         time_label_params = LabelParams(
             x=SCREEN_WIDTH / 2, y=time_label_y,
