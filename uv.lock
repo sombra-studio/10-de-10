@@ -8,10 +8,14 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "pudu-ui" },
+    { name = "pyglet" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "pudu-ui", specifier = ">=0.2.0" }]
+requires-dist = [
+    { name = "pudu-ui", specifier = ">=0.2.0" },
+    { name = "pyglet", specifier = ">=3.0.dev3" },
+]
 
 [[package]]
 name = "pudu-ui"
