@@ -4,8 +4,5 @@ version = "0.1.0"
 description = "Board game made in Python"
 requires-python = ">=3.14"
 dependencies = [
-    "pudu-ui",
+    "pudu-ui>=0.2.0",
 ]
-
-[tool.uv.sources]
-pudu-ui = { path = "../pudu-ui", editable = true }
