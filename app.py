@@ -19,7 +19,7 @@ from enums import Languages
 from utils import get_settings
 
 
-pyglet.resource.path = ['assets/imgs', 'assets/sounds', 'locales']
+pyglet.resource.path += ['assets/imgs', 'assets/sounds', 'locales']
 pyglet.resource.reindex()
 
 
