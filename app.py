@@ -15,19 +15,11 @@ from controllers import (
     EditNameController, HighscoresController, LogoController, MenuController,
     PlayController, SettingsController, WinController
 )
-from enums import Languages
 from utils import get_settings
 
 
 pyglet.resource.path += ['assets/imgs', 'assets/sounds', 'locales']
 pyglet.resource.reindex()
-
-
-LANGUAGES_MAP = {
-    Languages.EN: "en",
-    Languages.ES: "es",
-    Languages.FR: "fr"
-}
 
 
 class GameApp(App):
@@ -110,7 +102,7 @@ class GameApp(App):
         return EVENT_UNHANDLED
 
     def set_language(self):
-        folder_path = LANGUAGES_MAP[self.settings.language]
+        folder_path = self.settings.language.name.lower()
         # load locales strings
         try:
             filename = os.path.join(folder_path, "strings.json")
