@@ -27,6 +27,8 @@ class GameApp(App):
         super().__init__(
             width=SCREEN_WIDTH, height=SCREEN_HEIGHT, caption=APP_NAME
         )
+        app_logo = pyglet.resource.image("line-game-logo.png")
+        self.set_icon(app_logo)
         self.is_debug = is_debug
         self.settings = get_settings()
         self.navigator = Navigator()
