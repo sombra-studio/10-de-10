@@ -19,14 +19,14 @@ requires-dist = [
 
 [[package]]
 name = "pudu-ui"
-version = "0.2.0"
+version = "0.2.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pyglet" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/88/49/6ff453a64d7845964f11fadc5ddb632c4c9136f63e27a0437d79386ed27b/pudu_ui-0.2.0.tar.gz", hash = "sha256:56558ff10af3d9cb976305720fb90d5846890f2ea51df36184c17f69a01429c9", size = 37454, upload-time = "2026-04-20T20:40:07.271Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/01/5a/783178a2491a318ba938e84175677f190840f91fbf47f686de99e4295c56/pudu_ui-0.2.1.tar.gz", hash = "sha256:933520ea06e705b0638af5237caacbceff1c3f939da05b14804fb994f80d2053", size = 87541, upload-time = "2026-04-25T02:37:18.451Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4b/80/964189f67a922294a966ab1b7343386118927860a2585f31f9bf8ce6a91a/pudu_ui-0.2.0-py3-none-any.whl", hash = "sha256:8c233c0c0914e7bc27ca91c03798764cdb5beb6b49aa8367e7292171eadda4cb", size = 51957, upload-time = "2026-04-20T20:40:05.82Z" },
+    { url = "https://files.pythonhosted.org/packages/fb/6f/32675e6b480023c7024e63f1deae60e1fa47dbfd3c5adea334c7ba7f9e46/pudu_ui-0.2.1-py3-none-any.whl", hash = "sha256:a84761b398f5f3d971b41507675e602481b843506fc2816e81eec639f88dad51", size = 99884, upload-time = "2026-04-25T02:37:16.457Z" },
 ]
 
 [[package]]
