@@ -1,3 +1,4 @@
+from screens.credits_screen import CreditsScreen
 from screens.edit_name_screen import EditNameScreen
 from screens.highscores_screen import HighscoresScreen
 from screens.logo_screen import LogoScreen

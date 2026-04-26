@@ -1,3 +1,4 @@
+from controllers.credits_controller import CreditsController
 from controllers.edit_name_controller import EditNameController
 from controllers.highscores_controller import HighscoresController
 from controllers.logo_controller import LogoController

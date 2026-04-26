@@ -12,12 +12,14 @@ from constants import (
     SCREEN_WIDTH
 )
 from controllers import (
-    EditNameController, HighscoresController, LogoController, MenuController,
+    CreditsController, EditNameController, HighscoresController, LogoController,
+    MenuController,
     PlayController, SettingsController, WinController
 )
 from utils import get_settings
 
 
+pyglet.options.dpi_scaling = 'real'
 pyglet.resource.path += ['assets/imgs', 'assets/sounds', 'locales']
 pyglet.resource.reindex()
 
@@ -45,6 +47,9 @@ class GameApp(App):
         }
 
         # Initialize controllers
+        credits_controller = CreditsController(self, self.navigator)
+        self.navigator.add_controller(credits_controller)
+
         edit_name_controller = EditNameController(self, self.navigator)
         self.navigator.add_controller(edit_name_controller)
 

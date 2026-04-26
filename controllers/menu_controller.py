@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from app import GameApp
 
 
-from constants import EDIT_NAME, HIGHSCORES, MENU, PLAY, SETTINGS
+from constants import CREDITS, EDIT_NAME, HIGHSCORES, MENU, PLAY, SETTINGS
 from screens import MenuScreen
 from utils import get_user_name
 
@@ -23,6 +23,7 @@ class MenuController(Controller):
             self.edit_name,
             self.scores,
             self.settings,
+            self.credits,
             self.exit
         ]
         self.user_name = ""
@@ -56,6 +57,9 @@ class MenuController(Controller):
 
     def settings(self):
         self.navigator.change(SETTINGS)
+
+    def credits(self):
+        self.navigator.change(CREDITS)
 
     def exit(self):
         self.close()

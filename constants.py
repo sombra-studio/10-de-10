@@ -5,6 +5,7 @@ SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 
 # Screen names
+CREDITS = "Credits"
 EDIT_NAME = "Edit name"
 HIGHSCORES = "Highscores"
 LOGO = "Logo"
@@ -27,6 +28,7 @@ BACK_TO_GAME_S = "Back to game"
 BEST_TIMES_S = "Best Times"
 CANCEL_S = "Cancel"
 CONTINUE_S = "Continue"
+CREDITS_S = "Credits"
 EDIT_NAME_S = "Edit Name"
 GO_TO_MENU_S = "Go to menu"
 LANGUAGE_S = "Language"

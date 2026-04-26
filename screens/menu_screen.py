@@ -4,7 +4,8 @@ from pudu_ui.layouts import ListLayout, ListLayoutParams, ListDirection
 from pudu_ui import Button, ButtonParams, Screen
 
 from constants import (
-    APP_NAME, BEST_TIMES_S, EDIT_NAME_S, PLAY_S, QUIT_S, SCREEN_WIDTH,
+    APP_NAME, BEST_TIMES_S, CREDITS_S, EDIT_NAME_S, PLAY_S, QUIT_S,
+    SCREEN_WIDTH,
     SCREEN_HEIGHT, SETTINGS_S
 )
 from widgets import Title
@@ -15,7 +16,7 @@ GAME_TITLE = APP_NAME
 MENU_WIDTH = 250
 MENU_ITEM_HEIGHT = 50
 INTER_ITEM_SPACING = 20
-N = 5   # Number of menu options
+N = 6   # Number of menu options
 MENU_HEIGHT = int(MENU_ITEM_HEIGHT * N + INTER_ITEM_SPACING * (N - 1))
 
 
@@ -42,6 +43,7 @@ class MenuScreen(Screen):
             get_text(EDIT_NAME_S),
             get_text(BEST_TIMES_S),
             get_text(SETTINGS_S),
+            get_text(CREDITS_S),
             get_text(QUIT_S)
         ]
         for option in options:
