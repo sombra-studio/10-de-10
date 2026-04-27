@@ -3,7 +3,7 @@ from pyglet.gui import TextEntry
 from collections.abc import Callable
 
 
-from constants import CANCEL_S, CONTINUE_S, EDIT_NAME_S, SCREEN_WIDTH
+from constants import EDIT_NAME_S, SCREEN_WIDTH
 from widgets import CancelButton, ContinueButton, Title
 
 
@@ -18,13 +18,13 @@ class EditNameScreen(Screen):
         super().__init__("Edit")
         self.title = Title(text=get_text(EDIT_NAME_S), batch=self.batch)
         self.text_entry = TextEntry(
-            text=user_name, x=TEXT_ENTRY_X, y=TEXT_ENTRY_Y, width=TEXT_ENTRY_WIDTH,
+            text=user_name, x=TEXT_ENTRY_X, y=TEXT_ENTRY_Y,
+            width=TEXT_ENTRY_WIDTH,
             batch=self.batch
         )
 
-        self.text_entry.focus = True
         self.button = ContinueButton(self.batch, get_text)
-
         self.cancel_button = CancelButton(self.batch, get_text)
+
         self.widgets.append(self.button)
         self.widgets.append(self.cancel_button)

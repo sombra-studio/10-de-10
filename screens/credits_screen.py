@@ -25,14 +25,14 @@ class CreditsScreen(Screen):
         credits_info = get_text(CREDITS_INFO_S).format(programmer, APP_VERSION)
         self.info_label = Label(
             LabelParams(
-                y=self.title.y - 100,
                 width=INFO_LABEL_WIDTH, height=INFO_LABEL_HEIGHT,
+                anchor_y='bottom',
                 text=credits_info, multiline=True, style=p1()
             ), batch=self.batch
         )
-        self.info_label.x = SCREEN_WIDTH / 2 - INFO_LABEL_WIDTH / 2
+        self.info_label.x = SCREEN_WIDTH / 2 - self.info_label.width / 2
+        self.info_label.y = self.title.y - 100 - self.info_label.height
         self.info_label.invalidate()
-        self.info_label.set_debug_mode()
 
         self.button = ContinueButton(self.batch, get_text)
         self.button.x -= DIST_TO_CENTER
