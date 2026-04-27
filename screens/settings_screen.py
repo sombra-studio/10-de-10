@@ -68,13 +68,9 @@ class SettingsScreen(Screen):
         self.widgets.append(self.layout)
 
         # Continue and cancel buttons
-        self.button = ContinueButton(batch=self.batch)
-        self.button.text = get_text(CONTINUE_S)
-        self.button.invalidate()
+        self.button = ContinueButton(self.batch, get_text)
 
-        self.cancel_button = CancelButton(batch=self.batch)
-        self.cancel_button.text = get_text(CANCEL_S)
-        self.cancel_button.invalidate()
+        self.cancel_button = CancelButton(self.batch, get_text)
 
         self.widgets.append(self.button)
         self.widgets.append(self.cancel_button)

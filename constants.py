@@ -1,4 +1,5 @@
 APP_NAME = "10 de 10"
+APP_VERSION = "v1.0"
 
 
 SCREEN_WIDTH = 1280
@@ -29,9 +30,12 @@ BEST_TIMES_S = "Best Times"
 CANCEL_S = "Cancel"
 CONTINUE_S = "Continue"
 CREDITS_S = "Credits"
+CREDITS_INFO_S = "Credits info"
+DEVELOPED_BY_S = "Developed by"
 EDIT_NAME_S = "Edit Name"
 GO_TO_MENU_S = "Go to menu"
 LANGUAGE_S = "Language"
+OTHERS_S = "Others"
 QUIT_S = "Quit"
 PAUSE_S = "Pause"
 PLAY_S = "Play"

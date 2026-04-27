@@ -1,8 +1,9 @@
+from collections.abc import Callable
 from pudu_ui import ButtonParams
 from pyglet.graphics import Batch
 
 
-from constants import SCREEN_WIDTH
+from constants import CANCEL_S, SCREEN_WIDTH
 import styles
 from widgets.buttons import SecondaryButton
 
@@ -13,10 +14,11 @@ BUTTON_Y = 80
 
 
 class CancelButton(SecondaryButton):
-    def __init__(self, batch: Batch):
+    def __init__(self, batch: Batch, get_text: Callable[str, str]):
         params = ButtonParams(
             x=BUTTON_X, y=BUTTON_Y,
             width=styles.buttons.BUTTON_WIDTH,
-            height=styles.buttons.BUTTON_HEIGHT
+            height=styles.buttons.BUTTON_HEIGHT,
+            text=get_text(CANCEL_S)
         )
         super().__init__(params=params, batch=batch)

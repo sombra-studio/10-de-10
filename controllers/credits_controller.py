@@ -7,7 +7,7 @@ if TYPE_CHECKING:
     from app import GameApp
 
 
-from constants import CREDITS
+from constants import CREDITS, MENU
 from screens import CreditsScreen
 
 
@@ -21,3 +21,7 @@ class CreditsController(Controller):
         super().on_load()
         self.screen = CreditsScreen(self.app.get_text)
         self.app.set_screen(self.screen)
+        self.screen.button.on_press = self.on_button_press
+
+    def on_button_press(self, _):
+        self.navigator.change(MENU)
