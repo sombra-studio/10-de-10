@@ -6,6 +6,7 @@
   "Cancel": "Annuler",
   "Continue": "Continuer",
   "Credits": "Credits",
+  "Credits info": "{} - Programmer\nSounds from Pixabay.com.\nMade with Python and pyglet.\n10 de 10 {}",
   "Developed by": "Developed by Sombra Studio 2026",
   "Edit Name": "Modifier le nom",
   "Go to menu": "Aller au menu",
@@ -13,7 +14,6 @@
   "Quit": "Quitter",
   "Pause": "Pause",
   "Play": "Jouer",
-  "Programmer": "Programmer",
   "Settings": "Paramètres",
   "Your time": "Votre temps était :",
   "You win": "Vous avez gagné !"

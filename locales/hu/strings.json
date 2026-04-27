@@ -6,6 +6,7 @@
   "Cancel": "Mégse",
   "Continue": "Folytatás",
   "Credits": "Credits",
+  "Credits info": "{} - Programmer\nSounds from Pixabay.com.\nMade with Python and pyglet.\n10 de 10 {}",
   "Developed by": "Developed by Sombra Studio 2026",
   "Edit Name": "Név szerkesztése",
   "Go to menu": "Vissza a menübe",
@@ -13,7 +14,6 @@
   "Quit": "Kilépés",
   "Pause": "Szünet",
   "Play": "Játék",
-  "Programmer": "Programmer",
   "Settings": "Beállítások",
   "Your time": "Az időd:",
   "You win": "Győztél!"

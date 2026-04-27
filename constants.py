@@ -1,5 +1,5 @@
 APP_NAME = "10 de 10"
-APP_VERSION = "v1.0"
+APP_VERSION = "v1.0.0"
 
 
 SCREEN_WIDTH = 1280
@@ -35,7 +35,6 @@ DEVELOPED_BY_S = "Developed by"
 EDIT_NAME_S = "Edit Name"
 GO_TO_MENU_S = "Go to menu"
 LANGUAGE_S = "Language"
-OTHERS_S = "Others"
 QUIT_S = "Quit"
 PAUSE_S = "Pause"
 PLAY_S = "Play"
