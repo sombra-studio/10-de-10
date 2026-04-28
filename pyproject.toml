@@ -7,3 +7,8 @@ dependencies = [
     "pudu-ui>=0.2.0",
     "pyglet>=3.0.dev3",
 ]
+
+[dependency-groups]
+dev = [
+    "pyinstaller>=6.20.0",
+]
