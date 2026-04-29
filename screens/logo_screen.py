@@ -13,7 +13,7 @@ LOGO_HEIGHT = 200
 class LogoScreen(Screen):
     def __init__(self):
         super().__init__(LOGO)
-        image = pyglet.resource.image("logo.png")
+        image = pyglet.resource.image("imgs/logo.png")
         tex=image.get_texture()
         params = ImageParams(
             x=SCREEN_WIDTH / 2 - LOGO_WIDTH / 2,

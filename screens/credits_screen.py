@@ -38,7 +38,7 @@ class CreditsScreen(Screen):
         self.button.x -= DIST_TO_CENTER
         self.button.invalidate()
 
-        logo_tex = pyglet.resource.image('logo.png').get_texture()
+        logo_tex = pyglet.resource.image('imgs/logo.png').get_texture()
         logo_y = self.button.y + 100
         logo_params = ImageParams(
             x=SCREEN_WIDTH / 2 - LOGO_SIZE / 2, y=logo_y,

@@ -20,7 +20,7 @@ from utils import get_settings
 
 
 pyglet.options.dpi_scaling = 'real'
-pyglet.resource.path += ['assets/imgs', 'assets/sounds', 'locales']
+pyglet.resource.path += ['./assets', './locales']
 pyglet.resource.reindex()
 
 
@@ -29,7 +29,7 @@ class GameApp(App):
         super().__init__(
             width=SCREEN_WIDTH, height=SCREEN_HEIGHT, caption=APP_NAME
         )
-        app_logo = pyglet.resource.image("line-game-logo.png")
+        app_logo = pyglet.resource.image("imgs/line-game-logo.png")
         self.set_icon(app_logo)
         self.is_debug = is_debug
         self.settings = get_settings()
@@ -41,9 +41,15 @@ class GameApp(App):
 
         # Init sounds
         self.sounds = {
-            BELL_SOUND: pyglet.resource.audio("bell.wav", streaming=False),
-            DRUM_SOUND: pyglet.resource.audio("drum.wav", streaming=False),
-            POP_SOUND: pyglet.resource.audio("pop.wav", streaming=False)
+            BELL_SOUND: pyglet.resource.audio(
+                "sounds/bell.wav", streaming=False
+            ),
+            DRUM_SOUND: pyglet.resource.audio(
+                "sounds/drum.wav", streaming=False
+            ),
+            POP_SOUND: pyglet.resource.audio(
+                "sounds/pop.wav", streaming=False
+            )
         }
 
         # Initialize controllers
