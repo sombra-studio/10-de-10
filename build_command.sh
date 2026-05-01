@@ -1,10 +1,8 @@
 #!/bin/sh
-pyinstaller --windowed --noconfirm \
-    --add-data="assets:assets" \
-    --add-data="locales:locales" \
-    --collect-data=pudu_ui \
-    --icon=./assets/imgs/line-game-logo.png \
-    --name="10 de 10" \
-    main.py
-
-
+uv run python -m nuitka \
+      --include-data-dir=./assets=. \
+      --include-data-dir=./locales=. \
+      --include-package-data=pudu_ui \
+      --product-name="10 de 10" \
+      --product-version="1.0.0" \
+      main.py

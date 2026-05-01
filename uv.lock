@@ -11,6 +11,11 @@ dependencies = [
     { name = "pyglet" },
 ]
 
+[package.dev-dependencies]
+dev = [
+    { name = "nuitka" },
+]
+
 [package.metadata]
 requires-dist = [
     { name = "pudu-ui", specifier = ">=0.2.0" },
@@ -18,7 +23,13 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
-dev = []
+dev = [{ name = "nuitka", specifier = ">=4.0.8" }]
+
+[[package]]
+name = "nuitka"
+version = "4.0.8"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/1c/48/e54130d57b89fc015d702e98a1a217b5757625d01a01cc07d29fd046d336/nuitka-4.0.8.tar.gz", hash = "sha256:3f87e87e4d3773997944ce401145ef21461337121d39ea0fbe678274005e60ba", size = 4422692, upload-time = "2026-04-10T07:18:15.109Z" }
 
 [[package]]
 name = "pudu-ui"
