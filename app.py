@@ -1,5 +1,4 @@
 import json
-import os
 from pudu_ui.navigation import Navigator
 from pudu_ui import App
 import pyglet
@@ -117,17 +116,12 @@ class GameApp(App):
     def set_language(self):
         folder_path = self.settings.language.name.lower()
         # load locales strings
-        try:
-            filename = os.path.join(folder_path, "strings.json")
-            with pyglet.resource.file(filename) as f:
+        filename = f"{folder_path}/strings.json"
+        with pyglet.resource.file(filename) as f:
+            try:
                 self.words = json.load(f)
-        except FileNotFoundError:
-            print(
-                f"Could not find file strings.json for language "
-                f"{self.settings.language}"
-            )
-        except json.JSONDecodeError as e:
-            print(f"Error: Decoding language file {e}")
+            except json.JSONDecodeError as e:
+                print(f"Error: Decoding language file {e}")
 
     def get_text(self, text: str):
         return self.words.get(text, "TEXT_NOT_FOUND")
