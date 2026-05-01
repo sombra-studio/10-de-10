@@ -24,7 +24,7 @@ ITEM_HEIGHT = 48
 
 
 class SettingsScreen(Screen):
-    def __init__(self, settings: Settings, get_text: Callable[str, str]):
+    def __init__(self, settings: Settings, get_text: Callable[[str], str]):
         super().__init__(SETTINGS)
 
         self.title = Title(text=get_text(SETTINGS_S), batch=self.batch)

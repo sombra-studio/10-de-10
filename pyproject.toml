@@ -2,13 +2,11 @@
 name = "line-game"
 version = "1.0.0"
 description = "Board game made in Python"
-requires-python = ">=3.14"
+requires-python = ">=3.13"
 dependencies = [
     "pudu-ui>=0.2.0",
     "pyglet>=3.0.dev3",
 ]
 
 [dependency-groups]
-dev = [
-    "pyinstaller>=6.20.0",
-]
+dev = []

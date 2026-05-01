@@ -13,7 +13,7 @@ BUTTON_X = SCREEN_WIDTH / 2 + DIST_TO_CENTER - styles.buttons.BUTTON_WIDTH / 2
 
 
 class ContinueButton(Button):
-    def __init__(self, batch: Batch, get_text: Callable[str, str]):
+    def __init__(self, batch: Batch, get_text: Callable[[str], str]):
         params = ButtonParams(
             x=BUTTON_X, y=BUTTON_Y,
             width=styles.buttons.BUTTON_WIDTH,

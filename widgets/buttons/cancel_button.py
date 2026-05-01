@@ -14,7 +14,7 @@ BUTTON_Y = 80
 
 
 class CancelButton(SecondaryButton):
-    def __init__(self, batch: Batch, get_text: Callable[str, str]):
+    def __init__(self, batch: Batch, get_text: Callable[[str], str]):
         params = ButtonParams(
             x=BUTTON_X, y=BUTTON_Y,
             width=styles.buttons.BUTTON_WIDTH,

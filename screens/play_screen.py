@@ -23,11 +23,11 @@ class PlayScreen(Screen):
         self,
         game: Game,
         player_name: str,
-        get_text: Callable[str, str],
+        get_text: Callable[[str], str],
         on_select_callback: Callable[[int], None] = lambda l: None,
-        on_go_to_menu_callback: Callable[Any, None] = lambda l: None,
-        on_pause_callback: Callable[Any, None] = lambda l: None,
-        on_unpause_callback: Callable[Any, None] = lambda l: None
+        on_go_to_menu_callback: Callable[[Any], None] = lambda l: None,
+        on_pause_callback: Callable[[Any], None] = lambda l: None,
+        on_unpause_callback: Callable[[Any], None] = lambda l: None
     ):
         super().__init__('PlayScreen')
         self.is_ready = False

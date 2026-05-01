@@ -14,7 +14,7 @@ TEXT_ENTRY_Y = 400
 
 
 class EditNameScreen(Screen):
-    def __init__(self, user_name: str, get_text: Callable[str, str]):
+    def __init__(self, user_name: str, get_text: Callable[[str], str]):
         super().__init__("Edit")
         self.title = Title(text=get_text(EDIT_NAME_S), batch=self.batch)
         self.text_entry = TextEntry(

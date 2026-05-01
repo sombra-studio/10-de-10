@@ -18,7 +18,7 @@ LOGO_SIZE = 100
 
 
 class CreditsScreen(Screen):
-    def __init__(self, get_text: Callable[str, str]):
+    def __init__(self, get_text: Callable[[str], str]):
         super().__init__(CREDITS)
         self.title = Title(get_text(CREDITS_S), self.batch)
         programmer = "Jesús Henríquez"

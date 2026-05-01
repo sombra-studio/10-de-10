@@ -16,7 +16,7 @@ BUTTON_Y = 200
 
 
 class WinScreen(Screen):
-    def __init__(self, time: float, get_text: Callable[str, str]):
+    def __init__(self, time: float, get_text: Callable[[str], str]):
         super().__init__("Win")
         win_label_style = h1()
         win_label_y = 3 * SCREEN_HEIGHT / 4

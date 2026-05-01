@@ -19,7 +19,7 @@ INTER_ITEM_SPACING = 4
 
 
 class HighscoresScreen(Screen):
-    def __init__(self, highscores: list[Score], get_text: Callable[str, str]):
+    def __init__(self, highscores: list[Score], get_text: Callable[[str], str]):
         super().__init__("Highscores")
         self.title = Title(text=get_text(BEST_TIMES_S), batch=self.batch)
 
