@@ -18,7 +18,7 @@ from controllers import (
 from utils import get_settings
 
 
-pyglet.options.dpi_scaling = 'real'
+pyglet.options.dpi_scaling = 'platform'
 pyglet.resource.path += ['./assets', './locales']
 pyglet.resource.reindex()
 
