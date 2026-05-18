@@ -28,7 +28,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "nuitka", extras = ["all"], specifier = ">=4.0.8" },
-    { name = "pudu-ui", specifier = ">=0.2.0" },
+    { name = "pudu-ui", specifier = ">=0.2.2" },
     { name = "pyglet", specifier = ">=3.0.dev3" },
 ]
 
@@ -159,14 +159,14 @@ wheels = [
 
 [[package]]
 name = "pudu-ui"
-version = "0.2.1"
+version = "0.2.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pyglet" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/01/5a/783178a2491a318ba938e84175677f190840f91fbf47f686de99e4295c56/pudu_ui-0.2.1.tar.gz", hash = "sha256:933520ea06e705b0638af5237caacbceff1c3f939da05b14804fb994f80d2053", size = 87541, upload-time = "2026-04-25T02:37:18.451Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/e1/aa/3eada109f44149b7c6c9c800cd986e35d41f809c6662adbea8347fa787d5/pudu_ui-0.2.2.tar.gz", hash = "sha256:5396ef8def1e66eb7da39f2232f6fe57da989318e067fca755963e6de04130f1", size = 86478, upload-time = "2026-05-18T21:00:44.461Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/fb/6f/32675e6b480023c7024e63f1deae60e1fa47dbfd3c5adea334c7ba7f9e46/pudu_ui-0.2.1-py3-none-any.whl", hash = "sha256:a84761b398f5f3d971b41507675e602481b843506fc2816e81eec639f88dad51", size = 99884, upload-time = "2026-04-25T02:37:16.457Z" },
+    { url = "https://files.pythonhosted.org/packages/71/ee/6844a1fb155f6a99ebb0bd8a3f59557f916158a523cdf48745890e90feaa/pudu_ui-0.2.2-py3-none-any.whl", hash = "sha256:005f8611691e549491b1d69442ce8471129590b5a12c5af2d92317b800e81023", size = 102465, upload-time = "2026-05-18T21:00:42.179Z" },
 ]
 
 [[package]]

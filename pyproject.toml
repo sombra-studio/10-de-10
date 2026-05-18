@@ -5,7 +5,7 @@ description = "Board game made in Python"
 requires-python = ">=3.13"
 dependencies = [
     "nuitka[all]>=4.0.8",
-    "pudu-ui>=0.2.0",
+    "pudu-ui>=0.2.2",
     "pyglet>=3.0.dev3",
 ]
 
