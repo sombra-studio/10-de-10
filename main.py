@@ -1,6 +1,7 @@
 # --- Build Configuration ---
 # nuitka-project: --standalone
 # nuitka-project: --product-name="10 de 10"
+# nuitka-project: --product-version=1.0.0
 
 # --- Windows ---
 # nuitka-project-if: {OS} == "Windows":
