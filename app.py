@@ -103,6 +103,9 @@ class GameApp(App):
         result = self.current_screen.on_key_press(symbol, modifiers)
         if result == EVENT_HANDLED:
             return True
+        if modifiers & key.MOD_CTRL and symbol == key.S:
+            pyglet.graphics.framebuffer.get_screenshot().save("screenshot.png")
+
         if symbol == key.ESCAPE and not (
                 modifiers & ~(
                     key.MOD_NUMLOCK |
@@ -125,3 +128,5 @@ class GameApp(App):
 
     def get_text(self, text: str):
         return self.words.get(text, "TEXT_NOT_FOUND")
+
+
