@@ -1,5 +1,5 @@
 APP_NAME = "10 de 10"
-APP_VERSION = "v1.0.0"
+APP_VERSION = "v1.0.1"
 
 
 SCREEN_WIDTH = 1280
