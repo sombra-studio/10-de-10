@@ -1,0 +1,1 @@
+butler push ./dist/"10 de 10.exe" sombraxstudio/10-de-10:windows --userversion 1.0.1

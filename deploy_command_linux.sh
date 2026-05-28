@@ -1,0 +1,1 @@
+butler push ./dist/"10 de 10" sombraxstudio/10-de-10:linux --userversion 1.0.1
